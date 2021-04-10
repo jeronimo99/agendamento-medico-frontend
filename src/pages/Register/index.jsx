@@ -1,8 +1,36 @@
 import { Link } from 'react-router-dom';
+import { useFormik } from 'formik';
+import * as Yup from 'yup';
 import './styles.css';
 import registerImage from '../../assets/register.svg';
 
+const validationSchema = Yup.object().shape({
+  name: Yup.string()
+    .min(4, 'Nome muito curto!')
+    .max(50, 'Nome muito longo!')
+    .required('Obrigatório'),
+  phone: Yup.string().required('Obrigatório'),
+  email: Yup.string()
+    .email('Email inválido')
+    .lowercase('Letras minúsculas')
+    .required('Obrigatório'),
+  password: Yup.string().min(6, 'Nome muito curto!').required('Obrigatório'),
+});
+
 function Register() {
+  const formik = useFormik({
+    initialValues: {
+      name: '',
+      phone: '',
+      email: '',
+      password: '',
+    },
+    validationSchema,
+    onSubmit: (values) => {
+      alert(JSON.stringify(values, null, 2));
+    },
+  });
+
   return (
     <div className="register-container">
       <div id="h2">
@@ -15,33 +43,43 @@ function Register() {
           </div>
         </div>
         <div className="form-conta">
-          <form action="">
+          <form>
             <div className="inputs">
               <div className="label">
-                <label htmlFor="NOME" id="nome">
-                  Nome Completo
-                </label>
+                <label htmlFor="name">Nome Completo</label>
+                {formik.touched.name && formik.errors.name && (
+                  <span>{formik.errors.name}</span>
+                )}
               </div>
               <div className="campo">
                 <input
                   type="text"
                   placeholder="Ex: João da Silva Neto"
-                  name="NOME"
-                  id="NOME"
+                  name="name"
+                  id="name"
+                  value={formik.values.name}
+                  onChange={formik.handleChange}
+                  onBlur={formik.handleBlur}
                 />
               </div>
             </div>
             <div className="inputs cpf-fone">
               <div className="fone">
                 <div className="label">
-                  <label htmlFor="telefone">Telefone</label>
+                  <label htmlFor="phone">Telefone</label>
+                  {formik.touched.phone && formik.errors.phone && (
+                    <span>{formik.errors.phone}</span>
+                  )}
                 </div>
                 <div className="campo">
                   <input
                     type="text"
                     placeholder="Ex: 33 999707070"
-                    name="telefone"
-                    id="telefone"
+                    name="phone"
+                    id="phone"
+                    value={formik.values.phone}
+                    onChange={formik.handleChange}
+                    onBlur={formik.handleBlur}
                   />
                 </div>
               </div>
@@ -49,6 +87,9 @@ function Register() {
             <div className="inputs">
               <div className="label">
                 <label htmlFor="email">E-mail</label>
+                {formik.touched.email && formik.errors.email && (
+                  <span>{formik.errors.email}</span>
+                )}
               </div>
               <div className="campo">
                 <input
@@ -56,19 +97,28 @@ function Register() {
                   placeholder="Ex: joao.neto@hotmail.com"
                   name="email"
                   id="email"
+                  value={formik.values.email}
+                  onChange={formik.handleChange}
+                  onBlur={formik.handleBlur}
                 />
               </div>
             </div>
             <div className="inputs">
               <div className="label">
-                <label htmlFor="senha">Senha</label>
+                <label htmlFor="password">Senha</label>
+                {formik.touched.password && formik.errors.password && (
+                  <span>{formik.errors.password}</span>
+                )}
               </div>
               <div className="campo">
                 <input
                   type="password"
-                  name="senha"
-                  id="senha"
+                  name="password"
+                  id="password"
                   placeholder="Coloque uma senha forte como: @Tq31A#po7"
+                  value={formik.values.password}
+                  onChange={formik.handleChange}
+                  onBlur={formik.handleBlur}
                 />
               </div>
             </div>
@@ -80,7 +130,9 @@ function Register() {
           <Link to="/login">Sair</Link>
         </div>
         <div className="btn">
-          <Link href="../LOGIN/index.html">Cadastrar</Link>
+          <button type="submit" onClick={formik.handleSubmit}>
+            Cadastrar
+          </button>
         </div>
       </div>
     </div>

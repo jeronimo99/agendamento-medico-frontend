@@ -121,6 +121,12 @@
   align-items: center;
 }
 
+.register-container .form-conta .label span {
+  margin-left: 20px;
+  color: red;
+  font-size: 0.9em;
+}
+
 .register-container .form-conta label {
   margin-left: 1em;
 }
@@ -160,14 +166,14 @@
 
 .register-container .btn {
   display: flex;
-  justify-content: right;
+  justify-content: flex-end;
   align-items: center;
   width: 50%;
   height: 100%;
   margin-right: 3em;
 }
 
-.register-container .btn a {
+.register-container .btn button {
   display: flex;
   justify-content: center;
   align-items: center;
