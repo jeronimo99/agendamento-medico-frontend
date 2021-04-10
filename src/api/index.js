@@ -1,19 +1,17 @@
 import axios from './setup';
 
 export const URLS = {
-  LOGIN: '/login',
+  REGISTER: '/register',
 };
 
-const login = (username, password) => {
-  const loginEncoded = btoa(`${username}:${password}`);
-
-  return axios.post(URLS.LOGIN, null, {
-    headers: { Authorization: 'Basic ' + loginEncoded },
-  });
+const register = (form) => {
+  const newForm = { ...form };
+  newForm.email = form.email.toLowerCase();
+  return axios.post(URLS.REGISTER, newForm);
 };
 
 const API = {
-  LOGIN: login,
+  REGISTER: register,
 };
 
 export default API;

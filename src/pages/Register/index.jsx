@@ -1,6 +1,9 @@
 import { Link } from 'react-router-dom';
 import { useFormik } from 'formik';
 import * as Yup from 'yup';
+import { useSelector, useDispatch } from 'react-redux';
+import { register, selectIsLoading, selectError } from './registerSlice';
+
 import './styles.css';
 import registerImage from '../../assets/register.svg';
 
@@ -14,10 +17,14 @@ const validationSchema = Yup.object().shape({
     .email('Email inválido')
     .lowercase('Letras minúsculas')
     .required('Obrigatório'),
-  password: Yup.string().min(6, 'Nome muito curto!').required('Obrigatório'),
+  password: Yup.string().min(6, 'Senha muito curta!').required('Obrigatório'),
 });
 
 function Register() {
+  const dispatch = useDispatch();
+  const isLoading = useSelector(selectIsLoading);
+  const error = useSelector(selectError);
+
   const formik = useFormik({
     initialValues: {
       name: '',
@@ -27,7 +34,8 @@ function Register() {
     },
     validationSchema,
     onSubmit: (values) => {
-      alert(JSON.stringify(values, null, 2));
+      dispatch(register(values));
+      formik.resetForm();
     },
   });
 
@@ -121,6 +129,8 @@ function Register() {
                   onBlur={formik.handleBlur}
                 />
               </div>
+              {isLoading && 'Loading'}
+              {error && <span id="error">{error}</span>}
             </div>
           </form>
         </div>
