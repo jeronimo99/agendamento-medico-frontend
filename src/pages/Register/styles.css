@@ -1,0 +1,224 @@
+.register-container {
+  width: 950px;
+  height: 500px;
+  border: 3px solid white;
+  border-radius: 18px;
+  box-shadow: 0px 0px 16px 1px rgba(0, 0, 0, 0.68);
+  display: flex;
+  flex-direction: column;
+  background-color: white;
+}
+
+.register-container .conta {
+  display: flex;
+  width: 100%;
+  height: 75%;
+  border-bottom: 1px solid rgb(226, 226, 226);
+}
+
+.register-container form {
+  width: 100%;
+  height: 100%;
+}
+
+.register-container .info {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 50%;
+  height: 100%;
+  padding: 0.3em;
+}
+
+.register-container .info .img {
+  display: flex;
+  justify-content: center;
+  width: 100%;
+  height: 50%;
+}
+
+.register-container .texto {
+  font-size: 1.7em;
+  text-transform: uppercase;
+  width: 100%;
+  height: 10%;
+  color: #7e7e7e;
+  padding-left: 0.6em;
+}
+
+.register-container .form-conta {
+  display: flex;
+  justify-content: left;
+  align-items: left;
+  text-align: çeft;
+  flex-direction: column;
+  width: 66%;
+  height: 90%;
+}
+
+.register-container div#h2 {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  font-size: 1.7em;
+  padding-left: 0.6em;
+  text-transform: uppercase;
+  color: #7e7e7e;
+  width: 100%;
+  height: 9%;
+  letter-spacing: 4px;
+  font-weight: 500;
+}
+
+.register-container .form-conta input {
+  display: inline-block;
+  width: 92%;
+  margin: 9px;
+  padding: 14px;
+  background: rgb(241, 241, 241);
+  border-radius: 10px;
+  box-sizing: border-box;
+  border: none;
+  outline: none;
+}
+
+.register-container input:focus {
+  box-shadow: #134e5e 0px 0px 7px 0px;
+  scale: 1.05;
+}
+
+.register-container .form-conta .inputs {
+  display: flex;
+  flex-direction: column;
+}
+
+.register-container .form-conta .cpf-fone {
+  display: flex;
+  flex-direction: row;
+  justify-content: flex-start;
+  align-items: center;
+}
+
+.register-container .cpf {
+  width: 50%;
+}
+
+.register-container .fone {
+  width: 50%;
+}
+
+.register-container input#CPF {
+  width: 90%;
+}
+
+.register-container input#telefone {
+  width: 83%;
+}
+
+.register-container .form-conta .label {
+  display: flex;
+  justify-content: left;
+  align-items: center;
+}
+
+.register-container .form-conta label {
+  margin-left: 1em;
+}
+.register-container label#nome {
+  margin-top: 1.2em;
+}
+
+.register-container #endereco {
+  height: 36%;
+}
+
+.register-container label#endereco {
+  margin-top: 1.2em;
+}
+
+.register-container button {
+  background: #0ead69;
+  display: block;
+  border: none;
+  border-radius: 25px;
+  color: white;
+  font-weight: 500;
+  font-family: inherit;
+  font-size: 1.1em;
+  padding: 7px;
+  margin: 15px;
+  width: 40%;
+  cursor: pointer;
+}
+
+.register-container .botoes {
+  display: flex;
+  justify-content: space-around;
+  width: 100%;
+  height: 5em;
+}
+
+.register-container .btn {
+  display: flex;
+  justify-content: right;
+  align-items: center;
+  width: 50%;
+  height: 100%;
+  margin-right: 3em;
+}
+
+.register-container .btn a {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  text-decoration: none;
+  width: 40%;
+  height: 62%;
+  font-size: 1.4em;
+  background: #0ead69;
+  text-transform: uppercase;
+  color: white;
+  border: 1px solid #0ead69;
+  border-radius: 25px;
+}
+
+.register-container .sair {
+  display: flex;
+  justify-content: left;
+  align-items: center;
+  margin-left: 3em;
+  width: 50%;
+  height: 100%;
+}
+
+.register-container .sair a {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  text-decoration: none;
+  margin-right: 0.7em;
+  width: 18%;
+  height: 62%;
+  font-size: 1.4em;
+  text-transform: uppercase;
+  background: none;
+  color: #0ead69;
+  border: 1px solid #0ead69;
+  border-radius: 25px;
+}
+
+.register-container .svg-icon {
+  width: 1.5em;
+  height: 1.5em;
+}
+
+.register-container .svg-icon path,
+.register-container .svg-icon polygon,
+.register-container .svg-icon rect {
+  fill: black;
+}
+
+.register-container .svg-icon circle {
+  stroke: black;
+  stroke-width: 1;
+}

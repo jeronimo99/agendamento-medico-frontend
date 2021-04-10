@@ -1,0 +1,118 @@
+.login-container {
+  padding: 14px;
+  width: 1000px;
+  height: 450px;
+  border: 3px solid white;
+  border-radius: 18px;
+  box-shadow: 10px 10px 16px 0px rgba(0, 0, 0, 0.68);
+  display: flex;
+  background-color: white;
+}
+
+.login-container form {
+  width: 75%;
+  height: 80%;
+}
+.login-container .login-img {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 50%;
+}
+
+.login-container .login-img img {
+  width: 70%;
+  height: 80%;
+}
+
+.login-container .login-form {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  text-align: center;
+  flex-direction: column;
+  width: 50%;
+  border-left: 1px solid rgb(214, 214, 214);
+}
+
+.login-container .login-form #h2 {
+  margin: 20px;
+  padding: 10px;
+  font-size: 1.7em;
+  text-transform: uppercase;
+  width: 50%;
+  border-bottom: 1px solid rgb(214, 214, 214);
+  letter-spacing: 4px;
+  font-weight: 500;
+}
+
+.login-container .login-form input {
+  display: inline-block;
+  outline: none;
+  width: 70%;
+  margin: 9px;
+  padding: 14px;
+  background: rgb(233, 233, 233);
+  border-radius: 25px;
+  border: 2px solid white;
+}
+
+.login-container .login-form button {
+  background: #0ead69;
+  display: block;
+  border: none;
+  border-radius: 25px;
+  color: white;
+  font-weight: 500;
+  font-family: inherit;
+  font-size: 1.3em;
+  padding: 7px;
+  margin: 15px 0 15px 0;
+  width: 100%;
+  height: 100%;
+  cursor: pointer;
+}
+
+.login-container .login-form div.btn {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.login-container .login-form a {
+  display: block;
+  text-decoration: none;
+  font-size: 15px;
+  padding: 12px;
+  color: grey;
+}
+
+.login-container .login-form div.inputs {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.login-container a#entrar {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 30%;
+  height: 30%;
+}
+
+.login-container .svg-icon {
+  width: 1.5em;
+  height: 1.5em;
+}
+
+.login-container .svg-icon path,
+.login-container .svg-icon polygon,
+.login-container .svg-icon rect {
+  fill: black;
+}
+
+.login-container .svg-icon circle {
+  stroke: black;
+  stroke-width: 1;
+}
