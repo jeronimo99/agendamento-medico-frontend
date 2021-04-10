@@ -31,7 +31,6 @@ export const register = (form) => async (dispatch) => {
 
     dispatch(registerSuccess());
   } catch (err) {
-    console.log(err.response);
     if (err.response.status === 400) {
       return dispatch(registerError('Email já cadastrado.'));
     }

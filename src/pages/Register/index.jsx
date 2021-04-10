@@ -3,6 +3,7 @@ import { useFormik } from 'formik';
 import * as Yup from 'yup';
 import { useSelector, useDispatch } from 'react-redux';
 import { register, selectIsLoading, selectError } from './registerSlice';
+import Loader from 'react-loader-spinner';
 
 import './styles.css';
 import registerImage from '../../assets/register.svg';
@@ -129,7 +130,7 @@ function Register() {
                   onBlur={formik.handleBlur}
                 />
               </div>
-              {isLoading && 'Loading'}
+              {isLoading && <Loader type="Oval" height={40} width={40} />}
               {error && <span id="error">{error}</span>}
             </div>
           </form>
