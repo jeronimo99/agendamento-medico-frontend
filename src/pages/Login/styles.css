@@ -13,6 +13,13 @@
   width: 75%;
   height: 80%;
 }
+
+.login-container form span {
+  margin-left: 20px;
+  color: red;
+  font-size: 0.9em;
+}
+
 .login-container .login-img {
   display: flex;
   justify-content: center;
@@ -93,7 +100,7 @@
   align-items: center;
 }
 
-.login-container a#entrar {
+.login-container #entrar {
   display: flex;
   align-items: center;
   justify-content: center;

@@ -1,5 +1,5 @@
 import axios from 'axios';
-// import { logout } from '../pages/Login/loginSlice';
+import { logout } from '../pages/Login/loginSlice';
 import { getToken } from './auth';
 
 const instance = axios.create({
@@ -11,7 +11,7 @@ instance.interceptors.request.use((config) => {
 
   const token = getToken();
   if (token) {
-    config.headers['token'] = token;
+    config.headers['Authorization'] = `bearer ${token}`;
   }
 
   return config;
@@ -26,8 +26,8 @@ instance.interceptors.response.use(
       if (process.env.NODE_ENV === 'test') {
         return;
       }
-      // const store = require('../store').default;
-      // store.dispatch(logout());
+      const store = require('../store').default;
+      store.dispatch(logout());
     }
     return Promise.reject(error);
   }
