@@ -3,6 +3,8 @@ import { Switch, Route, Redirect } from 'react-router-dom';
 import { useSelector } from 'react-redux';
 
 import Main from './pages/Main';
+import Agendamento from './pages/Agendamento';
+
 import Admin from './pages/Admin';
 import Login from './pages/Login';
 import Register from './pages/Register';
@@ -18,6 +20,7 @@ function App() {
   return (
     <Switch>
       {isUser && <Route path="/" exact component={Main} />}
+      {isUser && <Route path="/agendamento" exact component={Agendamento} />}
 
       {isAdmin && <Route path="/admin" exact component={Admin} />}
       {isAdmin && <Route path="/admin/medicos" exact component={Doctors} />}

@@ -1,0 +1,10 @@
+.agendamento-container a {
+  font-size: 50px;
+  border: none;
+  cursor: pointer;
+  color: #333;
+}
+
+.agendamento-container a:active {
+  color: #333;
+}

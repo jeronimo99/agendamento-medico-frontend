@@ -40,7 +40,7 @@ function Main() {
             <img src={img2} alt="agendamento" />
           </div>
           <div className="botao">
-            <Link to="/" id="agendar" className="botaoCard">
+            <Link to="/agendamento" id="agendar" className="botaoCard">
               agendar !
             </Link>
           </div>
