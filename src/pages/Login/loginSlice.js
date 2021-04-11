@@ -1,6 +1,13 @@
 import { createSlice } from '@reduxjs/toolkit';
 import API from '../../api';
-import { getToken, setToken, removeToken } from '../../api/auth';
+import {
+  getToken,
+  setToken,
+  removeToken,
+  getRole,
+  setRole,
+  removeRole,
+} from '../../api/auth';
 
 export const loginSlice = createSlice({
   name: 'login',
@@ -8,6 +15,7 @@ export const loginSlice = createSlice({
     isLoading: false,
     error: '',
     token: getToken(),
+    role: getRole(),
   },
   reducers: {
     loginStart: (state) => {
@@ -17,7 +25,8 @@ export const loginSlice = createSlice({
     loginSuccess: (state, action) => {
       state.isLoading = false;
       state.error = '';
-      state.token = action.payload;
+      state.token = action.payload.token;
+      state.role = action.payload.role;
     },
     loginError: (state, action) => {
       state.isLoading = false;
@@ -25,6 +34,7 @@ export const loginSlice = createSlice({
     },
     logoutSuccess: (state) => {
       state.token = null;
+      state.role = null;
     },
   },
 });
@@ -36,7 +46,10 @@ export const login = (form) => async (dispatch) => {
     const response = await API.LOGIN(form);
 
     setToken(response.data.token);
-    dispatch(loginSuccess(response.data.token));
+    setRole(response.data.role);
+    dispatch(
+      loginSuccess({ token: response.data.token, role: response.data.role })
+    );
   } catch (err) {
     if (err.response.status === 400) {
       return dispatch(loginError('Email ou senha incorretos.'));
@@ -48,6 +61,7 @@ export const login = (form) => async (dispatch) => {
 
 export const logout = () => (dispatch) => {
   removeToken();
+  removeRole();
   dispatch(logoutSuccess());
 };
 
@@ -61,5 +75,6 @@ export const {
 export const selectIsLoading = (state) => state.login.isLoading;
 export const selectError = (state) => state.login.error;
 export const selectIsAuth = (state) => !!state.login.token;
+export const selectRole = (state) => state.login.role;
 
 export default loginSlice.reducer;

@@ -1,7 +1,7 @@
 import { createSlice } from '@reduxjs/toolkit';
 import API from '../../api';
 import { loginSuccess } from '../Login/loginSlice';
-import { setToken } from '../../api/auth';
+import { setToken, setRole } from '../../api/auth';
 
 export const registerSlice = createSlice({
   name: 'register',
@@ -32,7 +32,10 @@ export const register = (form) => async (dispatch) => {
     const response = await API.REGISTER(form);
 
     setToken(response.data.token);
-    dispatch(loginSuccess(response.data.token));
+    setRole(response.data.role);
+    dispatch(
+      loginSuccess({ token: response.data.token, role: response.data.token })
+    );
 
     dispatch(registerSuccess());
   } catch (err) {
