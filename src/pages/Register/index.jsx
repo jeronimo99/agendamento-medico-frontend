@@ -1,11 +1,13 @@
-import { useEffect } from 'react';
+import { useLayoutEffect } from 'react';
 import { Link } from 'react-router-dom';
 import { useFormik } from 'formik';
 import * as Yup from 'yup';
 import { useSelector, useDispatch } from 'react-redux';
-import { register, selectIsLoading, selectError } from './registerSlice';
-import { logout } from '../Login/loginSlice';
+import { useHistory } from 'react-router-dom';
 import Loader from 'react-loader-spinner';
+
+import { register, selectIsLoading, selectError } from './registerSlice';
+import { logout, selectIsAdmin, selectIsUser } from '../Login/loginSlice';
 
 import './styles.css';
 import registerImage from '../../assets/register.svg';
@@ -27,10 +29,21 @@ function Register() {
   const dispatch = useDispatch();
   const isLoading = useSelector(selectIsLoading);
   const error = useSelector(selectError);
+  const isAdmin = useSelector(selectIsAdmin);
+  const isUser = useSelector(selectIsUser);
+  const history = useHistory();
 
-  useEffect(() => {
+  useLayoutEffect(() => {
     dispatch(logout());
   }, [dispatch]);
+
+  useLayoutEffect(() => {
+    if (isUser) {
+      history.push('/');
+    } else if (isAdmin) {
+      history.push('/admin');
+    }
+  }, [history, isUser, isAdmin]);
 
   const formik = useFormik({
     initialValues: {

@@ -1,9 +1,18 @@
-import { useEffect } from 'react';
+import { useLayoutEffect } from 'react';
 import { Link } from 'react-router-dom';
 import { useFormik } from 'formik';
 import * as Yup from 'yup';
 import { useSelector, useDispatch } from 'react-redux';
-import { login, logout, selectIsLoading, selectError } from './loginSlice';
+import { useHistory } from 'react-router-dom';
+
+import {
+  login,
+  logout,
+  selectIsLoading,
+  selectError,
+  selectIsAdmin,
+  selectIsUser,
+} from './loginSlice';
 import Loader from 'react-loader-spinner';
 
 import './styles.css';
@@ -21,10 +30,21 @@ function Login() {
   const dispatch = useDispatch();
   const isLoading = useSelector(selectIsLoading);
   const error = useSelector(selectError);
+  const isAdmin = useSelector(selectIsAdmin);
+  const isUser = useSelector(selectIsUser);
+  const history = useHistory();
 
-  useEffect(() => {
+  useLayoutEffect(() => {
     dispatch(logout());
   }, [dispatch]);
+
+  useLayoutEffect(() => {
+    if (isUser) {
+      history.push('/');
+    } else if (isAdmin) {
+      history.push('/admin');
+    }
+  }, [history, isUser, isAdmin]);
 
   const formik = useFormik({
     initialValues: {

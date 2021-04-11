@@ -74,7 +74,9 @@ export const {
 
 export const selectIsLoading = (state) => state.login.isLoading;
 export const selectError = (state) => state.login.error;
-export const selectIsAuth = (state) => !!state.login.token;
-export const selectRole = (state) => state.login.role;
+export const selectIsAdmin = (state) =>
+  state.login.token && state.login.role === 'admin';
+export const selectIsUser = (state) =>
+  state.login.token && state.login.role === 'user';
 
 export default loginSlice.reducer;

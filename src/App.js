@@ -1,33 +1,28 @@
-import React, { useLayoutEffect } from 'react';
+import React from 'react';
 import { Switch, Route, Redirect } from 'react-router-dom';
 import { useSelector } from 'react-redux';
-import { useHistory } from 'react-router-dom';
 
 import Main from './pages/Main';
 import Admin from './pages/Admin';
 import Login from './pages/Login';
 import Register from './pages/Register';
+import AddDoctor from './pages/AddDoctor';
 
-import { selectIsAuth, selectRole } from './pages/Login/loginSlice';
+import { selectIsAdmin, selectIsUser } from './pages/Login/loginSlice';
 
 function App() {
-  const isAuth = useSelector(selectIsAuth);
-  const role = useSelector(selectRole);
-  const history = useHistory();
-
-  useLayoutEffect(() => {
-    console.log(role);
-    if (isAuth && role === 'user') {
-      history.push('/');
-    } else if (isAuth && role === 'admin') {
-      history.push('/admin');
-    }
-  }, [history, isAuth, role]);
+  const isAdmin = useSelector(selectIsAdmin);
+  const isUser = useSelector(selectIsUser);
 
   return (
     <Switch>
-      {isAuth && role === 'user' && <Route path="/" exact component={Main} />}
-      {isAuth && role === 'admin' && <Route path="/admin" component={Admin} />}
+      {isUser && <Route path="/" exact component={Main} />}
+
+      {isAdmin && <Route path="/admin" exact component={Admin} />}
+      {isAdmin && (
+        <Route path="/admin/adicionar-medico" exact component={AddDoctor} />
+      )}
+
       <Route path="/login" component={Login} />
       <Route path="/registrar" component={Register} />
       <Redirect to="/login" />
