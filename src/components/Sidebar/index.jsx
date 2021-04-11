@@ -22,12 +22,12 @@ function Sidebar() {
           </Link>
         </div>
         <div id="paciente">
-          <Link to="/">
+          <Link to="/admin/pacientes">
             Pacientes <i className="bi bi-people-fill"></i>
           </Link>
         </div>
         <div id="medico">
-          <Link to="/admin/adicionar-medico">
+          <Link to="/admin/medicos">
             Médicos <i className="bi bi-clipboard-plus"></i>
           </Link>
         </div>

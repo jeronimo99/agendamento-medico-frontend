@@ -1,0 +1,46 @@
+.patients-table {
+  display: flex;
+  flex-direction: column;
+  max-width: 800px;
+  width: 100%;
+  border-top: 1px solid #999;
+}
+
+.patients-table .row {
+  min-height: 30px;
+  display: flex;
+  align-items: center;
+  flex-direction: row;
+  border-bottom: 1px solid #999;
+  word-break: break-all;
+}
+
+.patients-table .title {
+  font-size: 1.4em;
+}
+
+.patients-table .title .cell {
+  justify-content: center;
+}
+
+.patients-table .row .cell {
+  flex: 1;
+  display: flex;
+}
+
+.patients-table .row .title .cell {
+  font-size: 1.2em;
+}
+
+.patients-table .row .center {
+  justify-content: center;
+}
+
+.patients-table button {
+  border: none;
+  cursor: pointer;
+}
+
+.patients-table button:hover {
+  color: #dc3545;
+}

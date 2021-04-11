@@ -6,6 +6,7 @@ export const URLS = {
   ADD_DOCTOR: '/admin/doctors',
   GET_DOCTORS: '/admin/doctors',
   DELETE_DOCTOR: '/admin/doctors/:id',
+  GET_PATIENTS: '/admin/patients',
 };
 
 const register = (form) => {
@@ -32,12 +33,17 @@ const getDoctors = () => {
   return axios.get(URLS.GET_DOCTORS);
 };
 
+const getPatients = () => {
+  return axios.get(URLS.GET_PATIENTS);
+};
+
 const API = {
   REGISTER: register,
   LOGIN: login,
   ADD_DOCTOR: addDoctor,
   GET_DOCTORS: getDoctors,
   DELETE_DOCTOR: deleteDoctor,
+  GET_PATIENTS: getPatients,
 };
 
 export default API;

@@ -56,8 +56,8 @@ function Doctors() {
   };
 
   return (
-    <div className="add-doctor-body-container">
-      <div className="add-doctor-container">
+    <div className="doctor-body-container">
+      <div className="doctor-container">
         <Sidebar />
         <div className="section">
           <h1>Add Doctor</h1>
