@@ -34,7 +34,7 @@ export const register = (form) => async (dispatch) => {
     setToken(response.data.token);
     setRole(response.data.role);
     dispatch(
-      loginSuccess({ token: response.data.token, role: response.data.token })
+      loginSuccess({ token: response.data.token, role: response.data.role })
     );
 
     dispatch(registerSuccess());

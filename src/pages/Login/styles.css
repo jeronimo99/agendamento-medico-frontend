@@ -1,3 +1,13 @@
+.login-body-container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: row;
+  min-height: 100vh;
+  font-family: 'Roboto', sans-serif;
+  background: linear-gradient(to right, #1d976c, #93f9b9);
+}
+
 .login-container {
   padding: 14px;
   width: 1000px;

@@ -1,0 +1,174 @@
+@import url('https://fonts.googleapis.com/css2?family=Rubik&display=swap');
+
+.main-container .header {
+  display: flex;
+  justify-content: flex-end;
+  align-items: center;
+  width: 100%;
+  height: 10vh;
+}
+
+.main-container #botaoSair {
+  text-decoration: none;
+  text-transform: uppercase;
+  font-size: 1.3em;
+  font-family: 'Rubik', sans-serif;
+  font-weight: 600;
+  padding: 15px 30px 15px 30px;
+  color: white;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background-color: #1d976c;
+  width: 8%;
+  height: 50px;
+  margin-top: 40px;
+  margin-right: 8%;
+  border-radius: 35px;
+  cursor: pointer;
+  border: none;
+}
+
+.main-container .container {
+  display: flex;
+  justify-content: space-evenly;
+  align-items: center;
+  width: 100%;
+  height: 90vh;
+}
+
+.main-container .card {
+  display: flex;
+  flex-direction: column;
+  width: 25%;
+  height: 400px;
+  box-shadow: 0px 0px 10px 0px rgba(0, 0, 0, 0.75);
+  border-radius: 25px;
+  transition: all 0.1s ease-in-out;
+}
+
+.main-container .card:hover {
+  box-shadow: 0px 0px 10px 0px #134e5e;
+  scale: 1.3;
+}
+
+.main-container .title {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  text-transform: uppercase;
+  font-family: 'Rubik', sans-serif;
+  font-size: 1.1em;
+  font-weight: 600;
+  width: 100%;
+  height: 20%;
+  border-radius: 25px 25px 0 0;
+}
+
+.main-container p {
+  border-bottom: 1px solid grey;
+  padding-bottom: 6px;
+  margin-top: 30px;
+}
+
+.main-container .imagem {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  border-radius: 25px 25px 0 0;
+  width: 100%;
+  height: 65%;
+}
+
+.main-container img {
+  width: 80%;
+  height: 65%;
+  max-width: 100%;
+  max-height: 100%;
+}
+
+.main-container .botao {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  border-radius: 0 0 25px 25px;
+  width: 100%;
+  height: 15%;
+}
+
+.main-container .botaoCard {
+  text-decoration: none;
+  text-transform: uppercase;
+  font-family: 'Rubik', sans-serif;
+  font-weight: 700;
+  font-size: 1.2em;
+  border-radius: 50px;
+  background: #1d976c;
+  color: white;
+  padding: 12px;
+  margin-bottom: 35px;
+}
+
+.main-container .botaoCard:hover {
+  background: linear-gradient(to right, #1d976c, #71b280);
+}
+
+.main-container a#conferir {
+  background: none;
+  border: 1px solid #1d976c;
+  color: black;
+  transition: all 0.2s ease-in;
+}
+
+.main-container a#conferir:hover {
+  color: white;
+  background: #1d976c;
+  border: none;
+}
+
+.main-container a#ajustar {
+  background: none;
+  border: 1px solid #1d976c;
+  color: black;
+  transition: all 0.2s ease-in;
+}
+
+.main-container a#ajustar:hover {
+  color: white;
+  background: #1d976c;
+  border: none;
+}
+@media only screen and (max-width: 768px) {
+  .container {
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    height: 100%;
+  }
+  .sair {
+    margin-top: 20px;
+    width: 30%;
+  }
+  .card {
+    width: 100%;
+    height: 30%;
+    box-shadow: none;
+    border-bottom: 1px solid rgb(190, 190, 190);
+    margin-bottom: 20px;
+    border-radius: 0px;
+  }
+  .card:hover {
+    box-shadow: none;
+    scale: 1;
+  }
+  #card3 {
+    border-bottom: none;
+  }
+  img {
+    width: 70%;
+    height: 55%;
+  }
+  .botaoCard {
+    margin: 10px 0 15px 0;
+  }
+}
