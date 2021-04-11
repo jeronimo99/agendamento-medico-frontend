@@ -1,0 +1,46 @@
+.doctors-table {
+  display: flex;
+  flex-direction: column;
+  max-width: 800px;
+  width: 100%;
+  border-top: 1px solid #999;
+}
+
+.doctors-table .row {
+  min-height: 30px;
+  display: flex;
+  align-items: center;
+  flex-direction: row;
+  border-bottom: 1px solid #999;
+  word-break: break-all;
+}
+
+.doctors-table .title {
+  font-size: 1.4em;
+}
+
+.doctors-table .title .cell {
+  justify-content: center;
+}
+
+.doctors-table .row .cell {
+  flex: 1;
+  display: flex;
+}
+
+.doctors-table .row .title .cell {
+  font-size: 1.2em;
+}
+
+.doctors-table .row .center {
+  justify-content: center;
+}
+
+.doctors-table button {
+  border: none;
+  cursor: pointer;
+}
+
+.doctors-table button:hover {
+  color: #dc3545;
+}

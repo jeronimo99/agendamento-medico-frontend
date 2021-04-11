@@ -12,6 +12,7 @@ import {
   selectError,
   selectIsAdmin,
   selectIsUser,
+  clear,
 } from './loginSlice';
 import Loader from 'react-loader-spinner';
 
@@ -57,6 +58,10 @@ function Login() {
       formik.resetForm();
     },
   });
+
+  useLayoutEffect(() => {
+    dispatch(clear());
+  }, [dispatch]);
 
   return (
     <div className="login-body-container">

@@ -6,7 +6,7 @@ import { useSelector, useDispatch } from 'react-redux';
 import { useHistory } from 'react-router-dom';
 import Loader from 'react-loader-spinner';
 
-import { register, selectIsLoading, selectError } from './registerSlice';
+import { register, selectIsLoading, selectError, clear } from './registerSlice';
 import { logout, selectIsAdmin, selectIsUser } from '../Login/loginSlice';
 
 import './styles.css';
@@ -58,6 +58,10 @@ function Register() {
       formik.resetForm();
     },
   });
+
+  useLayoutEffect(() => {
+    dispatch(clear());
+  }, [dispatch]);
 
   return (
     <div className="body-container">

@@ -36,6 +36,10 @@ export const loginSlice = createSlice({
       state.token = null;
       state.role = null;
     },
+    clear: (state) => {
+      state.isLoading = false;
+      state.error = '';
+    },
   },
 });
 
@@ -51,7 +55,7 @@ export const login = (form) => async (dispatch) => {
       loginSuccess({ token: response.data.token, role: response.data.role })
     );
   } catch (err) {
-    if (err.response.status === 400) {
+    if (err.response && err.response.status === 400) {
       return dispatch(loginError('Email ou senha incorretos.'));
     }
 
@@ -70,6 +74,7 @@ export const {
   loginSuccess,
   loginError,
   logoutSuccess,
+  clear,
 } = loginSlice.actions;
 
 export const selectIsLoading = (state) => state.login.isLoading;

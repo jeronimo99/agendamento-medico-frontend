@@ -22,6 +22,10 @@ export const registerSlice = createSlice({
       state.isLoading = false;
       state.error = action.payload;
     },
+    clear: (state) => {
+      state.isLoading = false;
+      state.error = '';
+    },
   },
 });
 
@@ -39,7 +43,7 @@ export const register = (form) => async (dispatch) => {
 
     dispatch(registerSuccess());
   } catch (err) {
-    if (err.response.status === 400) {
+    if (err.response && err.response.status === 400) {
       return dispatch(registerError('Email já cadastrado.'));
     }
 
@@ -51,6 +55,7 @@ export const {
   registerStart,
   registerSuccess,
   registerError,
+  clear,
 } = registerSlice.actions;
 
 export const selectIsLoading = (state) => state.register.isLoading;
