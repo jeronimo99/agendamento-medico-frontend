@@ -8,12 +8,12 @@ function AddDoctor() {
       <div className="add-doctor-container">
         <Sidebar />
       </div>
-      <div className="section">
+      {/* <div className="section">
         <h1>Add Doctor</h1>
         <form>
           <input />
         </form>
-      </div>
+      </div> */}
     </div>
   );
 }
