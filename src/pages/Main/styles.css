@@ -2,10 +2,18 @@
 
 .main-container .header {
   display: flex;
-  justify-content: flex-end;
+  justify-content: space-between;
   align-items: center;
   width: 100%;
   height: 10vh;
+}
+.main-container .header h1 {
+  margin-left: 10%;
+  margin-top: 3%;
+  text-transform: uppercase;
+  font-size: 1.7em;
+  color: rgb(97, 97, 97);
+  letter-spacing: 6px;
 }
 
 .main-container #botaoSair {
@@ -42,14 +50,14 @@
   flex-direction: column;
   width: 25%;
   height: 400px;
-  box-shadow: 0px 0px 10px 0px rgba(0, 0, 0, 0.75);
+  box-shadow: 0px 0px 7px 0px rgba(0, 0, 0, 0.75);
   border-radius: 25px;
   transition: all 0.1s ease-in-out;
 }
 
 .main-container .card:hover {
   box-shadow: 0px 0px 10px 0px #134e5e;
-  scale: 1.3;
+  scale: 1.1;
 }
 
 .main-container .title {
@@ -63,6 +71,7 @@
   width: 100%;
   height: 20%;
   border-radius: 25px 25px 0 0;
+  color: rgb(97, 97, 97);
 }
 
 .main-container p {
@@ -115,8 +124,8 @@
 
 .main-container a#conferir {
   background: none;
-  border: 1px solid #1d976c;
-  color: black;
+  border: 2px solid #1d976c;
+  color: rgb(97, 97, 97);
   transition: all 0.2s ease-in;
 }
 
@@ -128,8 +137,8 @@
 
 .main-container a#ajustar {
   background: none;
-  border: 1px solid #1d976c;
-  color: black;
+  border: 2px solid #1d976c;
+  color: rgb(97, 97, 97);
   transition: all 0.2s ease-in;
 }
 
@@ -140,26 +149,45 @@
 }
 @media only screen and (max-width: 768px) {
   .container {
-    flex-direction: column;
+    display: flex;
+    flex-wrap: wrap;
     justify-content: center;
     align-items: center;
     height: 100%;
+  }
+  .main-container img {
+    width: 0;
+    height: 0;
+  }
+
+  .main-container .imagem {
+    height: 15px;
+  }
+  .main-container p {
+    font-size: 1.3em;
+    margin-top: 5px;
+  }
+  .main-container #botaoSair {
+    margin-top: 7px;
+    margin-left: 5px;
+  }
+  .main-container .title {
+    margin-bottom: 25px;
   }
   .sair {
     margin-top: 20px;
     width: 30%;
   }
-  .card {
+  #card1,
+  #card2,
+  #card3 {
+    display: flex;
+    justify-content: center;
+    align-items: center;
     width: 100%;
-    height: 30%;
     box-shadow: none;
     border-bottom: 1px solid rgb(190, 190, 190);
-    margin-bottom: 20px;
     border-radius: 0px;
-  }
-  .card:hover {
-    box-shadow: none;
-    scale: 1;
   }
   #card3 {
     border-bottom: none;

@@ -14,6 +14,7 @@ function Main() {
   return (
     <div className="main-container">
       <div className="header">
+        <h1>Agendamento</h1>
         <button onClick={handleLogout} id="botaoSair">
           Sair
         </button>

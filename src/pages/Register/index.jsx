@@ -64,8 +64,8 @@ function Register() {
   }, [dispatch]);
 
   return (
-    <div className="body-container">
-      <div className="register-container">
+    <div className="body-container" id="body-container">
+      <div className="register-container" id="register-container">
         <div id="h2">
           <h2>Cadastro</h2>
         </div>
@@ -96,7 +96,7 @@ function Register() {
                   />
                 </div>
               </div>
-              <div className="inputs cpf-fone">
+              <div className="inputs fone">
                 <div className="fone">
                   <div className="label">
                     <label htmlFor="phone">Telefone</label>
@@ -161,7 +161,7 @@ function Register() {
           </div>
         </div>
         <div className="botoes">
-          <div className="sair">
+          <div className="reg-sair">
             <Link to="/login">Sair</Link>
           </div>
           <div className="btn">
