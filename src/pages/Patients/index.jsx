@@ -38,10 +38,9 @@ function Patients() {
       <div className="patients-container">
         <Sidebar />
         <div className="section">
-          <h1>Patients</h1>
-          <div style={{ margin: '20px 0' }}>
-            <h3>Filtro</h3>
-            <input value={filter} onChange={handleChange} />
+          <div className="search-bar">
+            <label htmlFor="search-box"><i className="bi bi-search"></i></label>
+            <input value={filter} onChange={handleChange} id="search-box" name="search-box" placeholder="Pesquisar"/>
           </div>
           {isLoading && <Loader type="Oval" height={40} width={40} />}
           {error && <span id="error">{error}</span>}

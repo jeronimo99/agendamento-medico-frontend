@@ -4,7 +4,7 @@ import './styles.css';
 function DoctorsTable({ data = null, handleDelete }) {
   return (
     <div className="doctors-table">
-      <div className="row title">
+      <div className="row" id="title">
         <div className="cell">Nome</div>
         <div className="cell">CRM</div>
         <div className="cell">Especialidade</div>

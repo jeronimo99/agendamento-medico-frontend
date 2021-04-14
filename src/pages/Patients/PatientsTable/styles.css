@@ -1,26 +1,52 @@
+@import url('https://fonts.googleapis.com/css2?family=Open+Sans:wght@400;700&display=swap');
+
 .patients-table {
   display: flex;
   flex-direction: column;
-  max-width: 800px;
+  max-width: 980px;
   width: 100%;
-  border-top: 1px solid #999;
+  margin-top: 30px;
+  border-radius: 8px;
 }
 
 .patients-table .row {
-  min-height: 30px;
+  min-height: 35px;
   display: flex;
   align-items: center;
   flex-direction: row;
-  border-bottom: 1px solid #999;
   word-break: break-all;
+  background-color: #f3f4f6;
+  color: #4b5563;
 }
 
-.patients-table .title {
-  font-size: 1.4em;
+.patients-table .row:hover {
+  background-color: #4ab48ff6;
+  color: white;
+}
+
+.patients-table .row:nth-child(odd) {
+  background-color: #d1d5db;
+}
+
+.patients-table #title:hover {
+  background-color: #1d976c;
+}
+
+.patients-table .cell {
+  margin-left: 10px;
+}
+
+.patients-table #title {
+  font-size: 1.3em;
+  background-color: #1d976c;
+  color: white;
 }
 
 .patients-table .title .cell {
-  justify-content: center;
+  justify-content: flex-start;
+  margin-left: 10px;
+  font-family: 'Open Sans', sans-serif;
+  font-weight: 700;
 }
 
 .patients-table .row .cell {

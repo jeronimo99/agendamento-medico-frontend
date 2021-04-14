@@ -1,8 +1,5 @@
 .doctor-body-container {
   display: flex;
-  justify-content: center;
-  align-items: center;
-  flex-direction: row;
   min-height: 100vh;
   font-family: 'Roboto', sans-serif;
   background-color: white;
@@ -10,22 +7,67 @@
 }
 
 .doctor-body-container form {
-  margin-bottom: 50px;
+  margin-bottom: 20px;
   width: 100%;
 }
 
 .doctor-body-container .section {
-  width: 100vw;
+  display: flex;
+  align-items: center;
+  flex-direction: column;
+  width: 100%;
 }
 
 .doctor-container {
   display: flex;
-  width: 100%;
+  width: 78%;
   height: 100vh;
+}
+.doctor-container button.add-doc {
+  display: flex;
+  align-items: center;
+  justify-content: space-evenly;
+  background: #0ead69;
+  border: none;
+  cursor: pointer;
+  width: 130px;
+  color: white;
+  border-radius: 12px;
+  height: 54px;
+  text-transform: uppercase;
+}
+
+.add-doc i {
+  font-size: 20px;
 }
 
 .doctor-body-container form span {
   margin-left: 20px;
   color: red;
   font-size: 0.9em;
+}
+
+form .doctor-inputs {
+  display: flex;
+  justify-content: space-evenly;
+  align-items: center;
+  margin: 47px 0 20px 0;
+}
+form .doctor-inputs .label {
+  font-size: 0.8em;
+  text-transform: uppercase;
+  color: #374151;
+  margin-bottom: 4px;
+}
+
+#name,
+#crm,
+#spec {
+  border: none;
+  outline: none;
+  border-radius: 4px;
+  background-color: #e5e7eb;
+  height: 38px;
+  color: #4b5563;
+  padding-left: 13px;
 }

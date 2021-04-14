@@ -57,12 +57,12 @@ function Doctors() {
 
   return (
     <div className="doctor-body-container">
+      <Sidebar />
       <div className="doctor-container">
-        <Sidebar />
         <div className="section">
-          <h1>Add Doctor</h1>
           <form onSubmit={formik.handleSubmit}>
-            <div className="inputs">
+            <div className="doctor-inputs">
+              <div className="name-input">
               <div className="label">
                 <label htmlFor="name">Nome Completo</label>
                 {formik.touched.name && formik.errors.name && (
@@ -81,6 +81,8 @@ function Doctors() {
                 />
               </div>
 
+              </div>
+            <div className="crm-input">
               <div className="label">
                 <label htmlFor="crm">CRM</label>
                 {formik.touched.crm && formik.errors.crm && (
@@ -98,7 +100,8 @@ function Doctors() {
                   onBlur={formik.handleBlur}
                 />
               </div>
-
+            </div>
+            <div className="spec-input">
               <div className="label">
                 <label htmlFor="spec">Especialização</label>
                 {formik.touched.spec && formik.errors.spec && (
@@ -116,10 +119,11 @@ function Doctors() {
                   onBlur={formik.handleBlur}
                 />
               </div>
+            </div>
 
               {isLoading && <Loader type="Oval" height={40} width={40} />}
               {error && <span id="error">{error}</span>}
-              <button type="submit">Cadastrar</button>
+              <button type="submit" className="add-doc"><i class="bi bi-person-plus-fill"></i>Cadastrar</button>
             </div>
           </form>
           <DoctorsTable data={data} handleDelete={handleDelete} />
