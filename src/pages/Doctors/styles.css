@@ -30,15 +30,15 @@
   background: #0ead69;
   border: none;
   cursor: pointer;
-  width: 130px;
+  width: 140px;
   color: white;
   border-radius: 12px;
-  height: 54px;
+  height: 50px;
   text-transform: uppercase;
 }
 
 .add-doc i {
-  font-size: 20px;
+  font-size: 23px;
 }
 
 .doctor-body-container form span {
@@ -56,7 +56,7 @@ form .doctor-inputs {
 form .doctor-inputs .label {
   font-size: 0.8em;
   text-transform: uppercase;
-  color: #374151;
+  color: #6b7280;
   margin-bottom: 4px;
 }
 

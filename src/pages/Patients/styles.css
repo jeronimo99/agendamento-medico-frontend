@@ -37,9 +37,9 @@
 }
 
 .search-bar {
-  background-color: #e5e7eb;
+  background-color: #f3f4f6;
   width: 60%;
-  height: 45px;
+  height: 50px;
   display: flex;
   align-items: center;
   border-radius: 8px;
@@ -48,16 +48,18 @@
 
 .search-bar label {
   margin: 0px 12px;
-  font-size: 1.5em;
+  font-size: 1.4em;
   cursor: pointer;
-  color: #6b7280;
+  color: #9ca3af;
 }
 
 .search-bar input {
-  background-color: #e5e7eb;
-  height: 36px;
+  background-color: #f3f4f6;
+  height: 50px;
+  width: 100%;
   border: none;
-  color: #6b7280;
+  border-radius: 8px;
+  color: #9ca3af;
   outline: none;
-  font-size: 1.2em;
+  font-size: 1.3em;
 }
