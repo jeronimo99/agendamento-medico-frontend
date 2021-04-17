@@ -19,7 +19,7 @@
 }
 
 .patients-body-container .patients-table .row:hover {
-  background: #4ab48ff6;
+  background: #0ead69;
   color: white;
 }
 
@@ -28,7 +28,7 @@
 }
 
 .patients-table #title:hover {
-  background-color: #1d976c;
+  background-color: #0ead69;
 }
 
 .patients-table .cell {
@@ -37,7 +37,7 @@
 
 .patients-table #title {
   font-size: 1.3em;
-  background-color: #1d976c;
+  background-color: #0ead69;
   color: white;
   width: 980px;
 }

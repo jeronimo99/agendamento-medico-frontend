@@ -1,24 +1,80 @@
+.agendamento-container {
+  background-color: white;
+  width: 100%;
+  height: 100vh;
+  overflow: hidden;
+}
+
+.agendamento-container .sair {
+  height: 17%;
+  display: flex;
+  justify-content: center;
+  align-items: flex-start;
+  padding-left: 40px;
+}
 .agendamento-container a {
   font-size: 50px;
   border: none;
   cursor: pointer;
-  color: #333;
+  color: #0ead69;
 }
 
 .agendamento-container a:active {
-  color: #333;
+  color: #0ead69;
 }
 
 .agendamento-container form {
   display: flex;
   flex-direction: column;
-  width: 200px;
+  width: 280px;
+}
+
+.agendamento-container .agendamento-form {
+  display: flex;
+  justify-content: flex-start;
+  align-items: flex-start;
+  width: 100%;
+  height: 83%;
+  margin-top: 30px;
 }
 
 .agendamento-container .MuiFormControl-root {
-  margin-bottom: 10px;
+  margin-bottom: 30px;
 }
 
-.agendamento-container button {
-  border: 1px solid blueviolet;
+.agendamento-container .MuiFormLabel-root {
+  color: #0ead69;
+  font-size: 1.1rem;
+}
+.agendamento-container .MuiInputBase-root {
+  color: #4b5563;
+}
+
+.agendamento-container .MuiButton-textPrimary {
+  font-size: 1.2em;
+  color: white;
+  background-color: #0ead69;
+}
+
+.agendamento-container .MuiButton-root:hover {
+  text-decoration: none;
+  background-color: #0ead69;
+}
+
+.agendamento-container .MuiInput-underline::after {
+  border-bottom: 2px solid #0ead69;
+}
+.agendamento-container .imagem {
+  display: flex;
+  justify-content: center;
+  align-items: flex-start;
+  width: 50%;
+  height: 100%;
+  margin: 0 20px 0 90px;
+}
+.agendamento-container img {
+  width: 100%;
+  height: 65%;
+  max-width: 100%;
+  max-height: 100%;
 }

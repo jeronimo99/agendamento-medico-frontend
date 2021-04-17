@@ -29,6 +29,8 @@ import {
 } from './agendamentoSlice';
 
 import './styles.css';
+import imgAgendamento from '../../assets/agendamento.svg';
+
 
 function Agendamento() {
   const spec = useSelector(selectSpec);
@@ -83,10 +85,16 @@ function Agendamento() {
 
   return (
     <div className="agendamento-container">
+      <div className="sair">
       <Link to="/">
         <i className="bi bi-arrow-left-square"></i>
       </Link>
+      </div>
       {error && error}
+      <div className="agendamento-form">
+      <div className="imagem">
+            <img src={imgAgendamento} alt="histórico" />
+          </div>
       <form>
         <FormControl>
           <InputLabel id="agendamento-spec">Especialidade</InputLabel>
@@ -166,6 +174,7 @@ function Agendamento() {
           <Button color="primary">Agendar</Button>
         )}
       </form>
+      </div>
     </div>
   );
 }
