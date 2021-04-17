@@ -51,8 +51,8 @@ function Doctors() {
     dispatch(fetchDoctors());
   }, [dispatch]);
 
-  const handleDelete = (crm) => {
-    dispatch(deleteDoctor(crm));
+  const handleDelete = (id) => {
+    dispatch(deleteDoctor(id));
   };
 
   return (

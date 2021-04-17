@@ -44,7 +44,7 @@ export const doctorsSlice = createSlice({
     deleteDoctorSuccess: (state, action) => {
       state.isLoading = false;
       state.error = '';
-      const index = state.data.findIndex((item) => item.crm === action.payload);
+      const index = state.data.findIndex((item) => item._id === action.payload);
       if (index > -1) {
         state.data.splice(index, 1);
       }
@@ -92,13 +92,13 @@ export const fetchDoctors = () => async (dispatch) => {
   }
 };
 
-export const deleteDoctor = (crm) => async (dispatch) => {
+export const deleteDoctor = (id) => async (dispatch) => {
   try {
     dispatch(deleteDoctorStart());
 
-    await API.DELETE_DOCTOR(crm);
+    await API.DELETE_DOCTOR(id);
 
-    dispatch(deleteDoctorSuccess(crm));
+    dispatch(deleteDoctorSuccess(id));
   } catch (err) {
     dispatch(
       deleteDoctorError('Houve um problema. Tente novamente mais tarde.')

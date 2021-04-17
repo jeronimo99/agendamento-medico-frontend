@@ -91,11 +91,11 @@ export const fetchDoctorList = (spec) => async (dispatch) => {
   }
 };
 
-export const fetchScheduleList = (doctor, date) => async (dispatch) => {
+export const fetchScheduleList = (id, date) => async (dispatch) => {
   try {
     dispatch(fetchStart());
 
-    const response = await API.GET_SCHEDULE_LIST(doctor, date);
+    const response = await API.GET_SCHEDULE_LIST(id, date);
 
     dispatch(
       fetchSuccess({ name: 'scheduleList', value: response.data.scheduleList })
@@ -105,11 +105,10 @@ export const fetchScheduleList = (doctor, date) => async (dispatch) => {
   }
 };
 
-export const addSchedule = () => async (dispatch) => {
+export const addSchedule = ({ doctor, date, spec }) => async (dispatch) => {
   try {
     dispatch(fetchStart());
-
-    const response = await API.ADD_SCHEDULE();
+    await API.ADD_SCHEDULE({ doctor, date, spec });
 
     dispatch(addSuccess());
   } catch (err) {
@@ -131,6 +130,7 @@ export const {
 
 export const selectIsLoading = (state) => state.agendamento.isLoading;
 export const selectError = (state) => state.agendamento.error;
+export const selectIsSuccess = (state) => state.agendamento.isSuccess;
 export const selectSpec = (state) => state.agendamento.spec;
 export const selectSpecList = (state) => state.agendamento.specList;
 export const selectDoctor = (state) => state.agendamento.doctor;

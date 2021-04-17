@@ -12,12 +12,12 @@ function DoctorsTable({ data = null, handleDelete }) {
       </div>
       {data &&
         data.map((item) => (
-          <div className="row" key={item.crm}>
+          <div className="row" key={item._id}>
             <div className="cell">{item.name}</div>
             <div className="cell">{item.crm}</div>
             <div className="cell">{item.spec}</div>
             <div className="cell center">
-              <button onClick={() => handleDelete(item.crm)}>
+              <button onClick={() => handleDelete(item._id)}>
                 <i className="bi bi-trash"></i>
               </button>
             </div>

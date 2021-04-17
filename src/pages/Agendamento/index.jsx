@@ -18,6 +18,7 @@ import {
   selectScheduleList,
   selectDate,
   selectError,
+  selectIsSuccess,
   changeSpec,
   changeDoctor,
   changeDate,
@@ -26,11 +27,11 @@ import {
   fetchSpecList,
   fetchDoctorList,
   fetchScheduleList,
+  addSchedule,
 } from './agendamentoSlice';
 
 import './styles.css';
 import imgAgendamento from '../../assets/agendamento.svg';
-
 
 function Agendamento() {
   const spec = useSelector(selectSpec);
@@ -41,6 +42,7 @@ function Agendamento() {
   const schedule = useSelector(selectSchedule);
   const scheduleList = useSelector(selectScheduleList);
   const error = useSelector(selectError);
+  const isSuccess = useSelector(selectIsSuccess);
 
   const dispatch = useDispatch();
 
@@ -83,97 +85,106 @@ function Agendamento() {
     dispatch(change({ name: e.target.name, value: e.target.value }));
   };
 
+  const handleClick = () => {
+    dispatch(addSchedule({ doctor, date, spec }));
+  };
+
   return (
     <div className="agendamento-container">
       <div className="sair">
-      <Link to="/">
-        <i className="bi bi-arrow-left-square"></i>
-      </Link>
+        <Link to="/">
+          <i className="bi bi-arrow-left-square"></i>
+        </Link>
       </div>
       {error && error}
+      {isSuccess && 'Agendamento realizado com sucesso!'}
       <div className="agendamento-form">
-      <div className="imagem">
-            <img src={imgAgendamento} alt="histórico" />
-          </div>
-      <form>
-        <FormControl>
-          <InputLabel id="agendamento-spec">Especialidade</InputLabel>
-          <Select
-            name="spec"
-            labelId="agendamento-spec"
-            id="agendamento-spec"
-            value={spec}
-            onChange={handleChangeSpec}
-          >
-            <MenuItem value="">Especialidade</MenuItem>
-            {specList &&
-              specList.map((item) => (
-                <MenuItem key={item} value={item}>
-                  {item}
-                </MenuItem>
-              ))}
-          </Select>
-        </FormControl>
-        {spec && (
+        <div className="imagem">
+          <img src={imgAgendamento} alt="histórico" />
+        </div>
+        <form>
           <FormControl>
-            <InputLabel id="agendamento-doctor">Médico</InputLabel>
+            <InputLabel id="agendamento-spec">Especialidade</InputLabel>
             <Select
-              name="doctor"
-              labelId="agendamento-doctor"
-              id="agendamento-doctor"
-              value={doctor}
-              onChange={handleChangeDoctor}
+              name="spec"
+              labelId="agendamento-spec"
+              id="agendamento-spec"
+              value={spec}
+              onChange={handleChangeSpec}
             >
-              <MenuItem value="">Médico</MenuItem>
-              {doctorList &&
-                doctorList.map((item) => (
-                  <MenuItem key={item.crm} value={item.crm}>
-                    {item.name}
-                  </MenuItem>
-                ))}
-            </Select>
-          </FormControl>
-        )}
-        {spec && doctor && (
-          <TextField
-            id="date"
-            label="Data"
-            type="date"
-            name="date"
-            value={date}
-            onChange={handleChangeDate}
-            InputProps={{ inputProps: { min: moment().format('YYYY-MM-DD') } }}
-            InputLabelProps={{
-              shrink: true,
-            }}
-          />
-        )}
-        {spec && doctor && date && (
-          <FormControl>
-            <InputLabel id="agendamento-schedule">
-              Horário de atendimento
-            </InputLabel>
-            <Select
-              name="schedule"
-              labelId="agendamento-schedule"
-              id="agendamento-doctor"
-              value={schedule}
-              onChange={handleChange}
-            >
-              <MenuItem value="">Horário de atendimento</MenuItem>
-              {scheduleList &&
-                scheduleList.map((item) => (
+              <MenuItem value="">Especialidade</MenuItem>
+              {specList &&
+                specList.map((item) => (
                   <MenuItem key={item} value={item}>
                     {item}
                   </MenuItem>
                 ))}
             </Select>
           </FormControl>
-        )}
-        {spec && doctor && date && schedule && (
-          <Button color="primary">Agendar</Button>
-        )}
-      </form>
+          {spec && (
+            <FormControl>
+              <InputLabel id="agendamento-doctor">Médico</InputLabel>
+              <Select
+                name="doctor"
+                labelId="agendamento-doctor"
+                id="agendamento-doctor"
+                value={doctor}
+                onChange={handleChangeDoctor}
+              >
+                <MenuItem value="">Médico</MenuItem>
+                {doctorList &&
+                  doctorList.map((item) => (
+                    <MenuItem key={item._id} value={item._id}>
+                      {item.name}
+                    </MenuItem>
+                  ))}
+              </Select>
+            </FormControl>
+          )}
+          {spec && doctor && (
+            <TextField
+              id="date"
+              label="Data"
+              type="date"
+              name="date"
+              value={date}
+              onChange={handleChangeDate}
+              InputProps={{
+                inputProps: { min: moment().format('YYYY-MM-DD') },
+              }}
+              InputLabelProps={{
+                shrink: true,
+              }}
+            />
+          )}
+          {spec && doctor && date && (
+            <FormControl>
+              <InputLabel id="agendamento-schedule">
+                Horário de atendimento
+              </InputLabel>
+              <Select
+                name="schedule"
+                labelId="agendamento-schedule"
+                id="agendamento-doctor"
+                value={schedule}
+                onChange={handleChange}
+              >
+                <MenuItem value="">Horário de atendimento</MenuItem>
+                {scheduleList &&
+                  scheduleList.map((item) => (
+                    <MenuItem key={item} value={item}>
+                      {item}
+                    </MenuItem>
+                  ))}
+              </Select>
+            </FormControl>
+          )}
+          {spec && doctor && date && schedule && (
+            <Button onClick={handleClick} color="primary">
+              Agendar
+            </Button>
+          )}
+        </form>
       </div>
     </div>
   );
