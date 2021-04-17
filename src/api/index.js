@@ -5,9 +5,10 @@ export const URLS = {
   LOGIN: '/login',
   ADD_DOCTOR: '/admin/doctors',
   GET_DOCTORS: '/admin/doctors',
-  DELETE_DOCTOR: '/admin/doctors/:id',
+  DELETE_DOCTOR: '/admin/doctors',
   GET_SPECS: '/user/specs',
   GET_DOCTORS_BY_SPEC: '/user/specs/:id/doctors',
+  GET_SCHEDULE_LIST: '/user/doctors/:id/schedule/',
   GET_PATIENTS: '/admin/patients',
 };
 
@@ -28,7 +29,8 @@ const addDoctor = (form) => {
 };
 
 const deleteDoctor = (crm) => {
-  return axios.delete(URLS.DELETE_DOCTOR.replace(':id', crm));
+  const params = { id: crm };
+  return axios.put(URLS.DELETE_DOCTOR, params);
 };
 
 const getDoctors = () => {
@@ -43,6 +45,15 @@ const getDoctorsBySpec = (spec) => {
   return axios.get(URLS.GET_DOCTORS_BY_SPEC.replace(':id', spec));
 };
 
+const getScheduleList = (doctor, date) => {
+  const queryParams = {
+    date: date,
+  };
+  return axios.get(URLS.GET_SCHEDULE_LIST.replace(':id', doctor), {
+    params: queryParams,
+  });
+};
+
 const getPatients = () => {
   return axios.get(URLS.GET_PATIENTS);
 };
@@ -55,6 +66,7 @@ const API = {
   DELETE_DOCTOR: deleteDoctor,
   GET_SPECS: getSpecs,
   GET_DOCTORS_BY_SPEC: getDoctorsBySpec,
+  GET_SCHEDULE_LIST: getScheduleList,
   GET_PATIENTS: getPatients,
 };
 

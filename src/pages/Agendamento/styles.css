@@ -18,3 +18,7 @@
 .agendamento-container .MuiFormControl-root {
   margin-bottom: 10px;
 }
+
+.agendamento-container button {
+  border: 1px solid blueviolet;
+}

@@ -8,17 +8,19 @@ export const agendamentoSlice = createSlice({
     spec: '',
     specList: [],
     doctor: '',
-    doctorList: '',
+    doctorList: [],
     date: moment().format('YYYY-MM-DD'),
-    hoursRange: '',
-    hoursRangeList: '',
+    schedule: '',
+    scheduleList: [],
     isLoading: false,
+    isSuccess: false,
     error: '',
   },
   reducers: {
     fetchStart: (state) => {
       state.isLoading = true;
       state.error = '';
+      state.isSuccess = false;
     },
     fetchSuccess: (state, action) => {
       state.isLoading = false;
@@ -32,11 +34,15 @@ export const agendamentoSlice = createSlice({
     changeSpec: (state, action) => {
       state.spec = action.payload;
       state.doctor = '';
-      state.hoursRange = '';
+      state.schedule = '';
     },
     changeDoctor: (state, action) => {
       state.doctor = action.payload;
-      state.hoursRange = '';
+      state.schedule = '';
+    },
+    changeDate: (state, action) => {
+      state.date = action.payload;
+      state.schedule = '';
     },
     change: (state, action) => {
       state[action.payload.name] = action.payload.value;
@@ -44,10 +50,17 @@ export const agendamentoSlice = createSlice({
     clear: (state) => {
       state.isLoading = false;
       state.error = '';
+      state.isSuccess = false;
       state.spec = '';
       state.doctor = '';
       state.date = moment().format('YYYY-MM-DD');
-      state.hoursRange = '';
+      state.schedule = '';
+      state.scheduleList = [];
+    },
+    addSuccess: (state, action) => {
+      state.isLoading = false;
+      state.error = '';
+      state.isSuccess = true;
     },
   },
 });
@@ -78,14 +91,42 @@ export const fetchDoctorList = (spec) => async (dispatch) => {
   }
 };
 
+export const fetchScheduleList = (doctor, date) => async (dispatch) => {
+  try {
+    dispatch(fetchStart());
+
+    const response = await API.GET_SCHEDULE_LIST(doctor, date);
+
+    dispatch(
+      fetchSuccess({ name: 'scheduleList', value: response.data.scheduleList })
+    );
+  } catch (err) {
+    dispatch(fetchError('Houve um problema. Tente novamente mais tarde.'));
+  }
+};
+
+export const addSchedule = () => async (dispatch) => {
+  try {
+    dispatch(fetchStart());
+
+    const response = await API.ADD_SCHEDULE();
+
+    dispatch(addSuccess());
+  } catch (err) {
+    dispatch(fetchError('Houve um problema. Tente novamente mais tarde.'));
+  }
+};
+
 export const {
   fetchStart,
   fetchSuccess,
   fetchError,
   changeSpec,
   changeDoctor,
+  changeDate,
   change,
   clear,
+  addSuccess,
 } = agendamentoSlice.actions;
 
 export const selectIsLoading = (state) => state.agendamento.isLoading;
@@ -95,6 +136,7 @@ export const selectSpecList = (state) => state.agendamento.specList;
 export const selectDoctor = (state) => state.agendamento.doctor;
 export const selectDoctorList = (state) => state.agendamento.doctorList;
 export const selectDate = (state) => state.agendamento.date;
-export const selectHoursRange = (state) => state.agendamento.hoursRange;
+export const selectSchedule = (state) => state.agendamento.schedule;
+export const selectScheduleList = (state) => state.agendamento.scheduleList;
 
 export default agendamentoSlice.reducer;

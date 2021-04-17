@@ -7,20 +7,25 @@ import InputLabel from '@material-ui/core/InputLabel';
 import FormControl from '@material-ui/core/FormControl';
 import Select from '@material-ui/core/Select';
 import MenuItem from '@material-ui/core/MenuItem';
+import Button from '@material-ui/core/Button';
 
 import {
   selectSpec,
   selectSpecList,
   selectDoctor,
   selectDoctorList,
-  selectHoursRange,
+  selectSchedule,
+  selectScheduleList,
   selectDate,
+  selectError,
   changeSpec,
   changeDoctor,
+  changeDate,
   change,
   clear,
   fetchSpecList,
   fetchDoctorList,
+  fetchScheduleList,
 } from './agendamentoSlice';
 
 import './styles.css';
@@ -31,21 +36,30 @@ function Agendamento() {
   const doctor = useSelector(selectDoctor);
   const doctorList = useSelector(selectDoctorList);
   const date = useSelector(selectDate);
-  const hoursRange = useSelector(selectHoursRange);
+  const schedule = useSelector(selectSchedule);
+  const scheduleList = useSelector(selectScheduleList);
+  const error = useSelector(selectError);
 
   const dispatch = useDispatch();
 
   useLayoutEffect(() => {
     dispatch(clear());
     dispatch(fetchSpecList());
-  }, [dispatch]);
+  }, []);
 
   useEffect(() => {
     if (specList.length < 1) {
       return;
     }
     dispatch(fetchDoctorList(spec));
-  }, [dispatch, spec]);
+  }, [spec]);
+
+  useEffect(() => {
+    if (!doctor || !date) {
+      return;
+    }
+    dispatch(fetchScheduleList(doctor, date));
+  }, [doctor, date]);
 
   const handleChangeSpec = (e) => {
     e.preventDefault();
@@ -55,6 +69,11 @@ function Agendamento() {
   const handleChangeDoctor = (e) => {
     e.preventDefault();
     dispatch(changeDoctor(e.target.value));
+  };
+
+  const handleChangeDate = (e) => {
+    e.preventDefault();
+    dispatch(changeDate(e.target.value));
   };
 
   const handleChange = (e) => {
@@ -67,16 +86,8 @@ function Agendamento() {
       <Link to="/">
         <i className="bi bi-arrow-left-square"></i>
       </Link>
+      {error && error}
       <form>
-        {/* <select name="spec" value={spec} onChange={handleChange}>
-          <option value="">Especialidade</option>
-          {specList &&
-            specList.map((item) => (
-              <option key={item} value={item}>
-                {item}
-              </option>
-            ))}
-        </select> */}
         <FormControl>
           <InputLabel id="agendamento-spec">Especialidade</InputLabel>
           <Select
@@ -122,25 +133,37 @@ function Agendamento() {
             type="date"
             name="date"
             value={date}
-            onChange={handleChange}
+            onChange={handleChangeDate}
             InputProps={{ inputProps: { min: moment().format('YYYY-MM-DD') } }}
             InputLabelProps={{
               shrink: true,
             }}
           />
         )}
-        {spec && doctor && (
-          <TextField
-            id="hoursRange"
-            label="Horário de atendimento"
-            type="hoursRange"
-            name="hoursRange"
-            value={hoursRange}
-            onChange={handleChange}
-            InputLabelProps={{
-              shrink: true,
-            }}
-          />
+        {spec && doctor && date && (
+          <FormControl>
+            <InputLabel id="agendamento-schedule">
+              Horário de atendimento
+            </InputLabel>
+            <Select
+              name="schedule"
+              labelId="agendamento-schedule"
+              id="agendamento-doctor"
+              value={schedule}
+              onChange={handleChange}
+            >
+              <MenuItem value="">Horário de atendimento</MenuItem>
+              {scheduleList &&
+                scheduleList.map((item) => (
+                  <MenuItem key={item} value={item}>
+                    {item}
+                  </MenuItem>
+                ))}
+            </Select>
+          </FormControl>
+        )}
+        {spec && doctor && date && schedule && (
+          <Button color="primary">Agendar</Button>
         )}
       </form>
     </div>
