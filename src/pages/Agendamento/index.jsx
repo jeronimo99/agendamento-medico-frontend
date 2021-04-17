@@ -1,19 +1,44 @@
+import { useLayoutEffect, useEffect } from 'react';
 import { useSelector, useDispatch } from 'react-redux';
+import moment from 'moment';
 import { Link } from 'react-router-dom';
 import TextField from '@material-ui/core/TextField';
 import InputLabel from '@material-ui/core/InputLabel';
-import Select from '@material-ui/core/Select';
-import MenuItem from '@material-ui/core/MenuItem';
 
-import { selectDate, change } from './agendamentoSlice';
-import { WORK_TIMES } from '../../utils/constants';
+import {
+  selectSpec,
+  selectSpecList,
+  selectDoctor,
+  selectDoctorList,
+  selectHoursRange,
+  selectDate,
+  change,
+  fetchSpecList,
+  fetchDoctorList,
+} from './agendamentoSlice';
 
 import './styles.css';
 
 function Agendamento() {
+  const spec = useSelector(selectSpec);
+  const specList = useSelector(selectSpecList);
+  const doctor = useSelector(selectDoctor);
+  const doctorList = useSelector(selectDoctorList);
   const date = useSelector(selectDate);
+  const hoursRange = useSelector(selectHoursRange);
 
   const dispatch = useDispatch();
+
+  useLayoutEffect(() => {
+    dispatch(fetchSpecList());
+  }, [dispatch]);
+
+  useEffect(() => {
+    if (specList.length < 1) {
+      return;
+    }
+    dispatch(fetchDoctorList(spec));
+  }, [dispatch, spec]);
 
   const handleChange = (e) => {
     e.preventDefault();
@@ -23,31 +48,57 @@ function Agendamento() {
   return (
     <div className="agendamento-container">
       <Link to="/">
-        <i class="bi bi-arrow-left-square"></i>
+        <i className="bi bi-arrow-left-square"></i>
       </Link>
       <form>
-        <TextField
-          id="date"
-          label="Data"
-          type="date"
-          name="date"
-          value={date}
-          onChange={handleChange}
-          InputLabelProps={{
-            shrink: true,
-          }}
-        />
+        <select name="spec" value={spec} onChange={handleChange}>
+          <option value="">Especialidade</option>
+          {specList &&
+            specList.map((item) => (
+              <option key={item} value={item}>
+                {item}
+              </option>
+            ))}
+        </select>
+        {spec && (
+          <select name="doctor" value={doctor} onChange={handleChange}>
+            <option value="">Médico</option>
+            {doctorList &&
+              doctorList.map((item) => (
+                <option key={item.crm} value={item.crm}>
+                  {item.name}
+                </option>
+              ))}
+          </select>
+        )}
+        {spec && doctor && (
+          <TextField
+            id="date"
+            label="Data"
+            type="date"
+            name="date"
+            value={date}
+            onChange={handleChange}
+            InputProps={{ inputProps: { min: moment().format('YYYY-MM-DD') } }}
+            InputLabelProps={{
+              shrink: true,
+            }}
+          />
+        )}
+        {spec && doctor && (
+          <TextField
+            id="hoursRange"
+            label="Horário de atendimento"
+            type="hoursRange"
+            name="hoursRange"
+            value={hoursRange}
+            onChange={handleChange}
+            InputLabelProps={{
+              shrink: true,
+            }}
+          />
+        )}
         <InputLabel id="horario">Horário</InputLabel>
-        <Select
-          labelId="horario"
-          id="horario"
-          // value={age}
-          onChange={handleChange}
-        >
-          <MenuItem value={10}>Ten</MenuItem>
-          <MenuItem value={20}>Twenty</MenuItem>
-          <MenuItem value={30}>Thirty</MenuItem>
-        </Select>
       </form>
     </div>
   );

@@ -5,21 +5,26 @@ import API from '../../api';
 export const agendamentoSlice = createSlice({
   name: 'agendamento',
   initialState: {
+    spec: '',
+    specList: [],
+    doctor: '',
+    doctorList: '',
     date: moment().format('YYYY-MM-DD'),
+    hoursRange: '',
     isLoading: false,
     error: '',
   },
   reducers: {
-    addDoctorStart: (state) => {
+    fetchStart: (state) => {
       state.isLoading = true;
       state.error = '';
     },
-    addDoctorSuccess: (state, action) => {
+    fetchSuccess: (state, action) => {
       state.isLoading = false;
       state.error = '';
-      state.data.unshift(action.payload);
+      state[action.payload.name] = action.payload.value;
     },
-    addDoctorError: (state, action) => {
+    fetchError: (state, action) => {
       state.isLoading = false;
       state.error = action.payload;
     },
@@ -29,37 +34,55 @@ export const agendamentoSlice = createSlice({
     clear: (state) => {
       state.isLoading = false;
       state.error = '';
-      state.data = null;
+      state.spec = '';
+      state.doctor = '';
+      state.date = moment().format('YYYY-MM-DD');
+      state.hoursRange = '';
     },
   },
 });
 
-export const addDoctor = (form) => async (dispatch) => {
+export const fetchSpecList = () => async (dispatch) => {
   try {
-    dispatch(addDoctorStart());
+    dispatch(fetchStart());
 
-    const response = await API.ADD_DOCTOR(form);
+    const response = await API.GET_SPECS();
 
-    dispatch(addDoctorSuccess(response.data.doctor));
+    dispatch(fetchSuccess({ name: 'specList', value: response.data.specs }));
   } catch (err) {
-    if (err.response && err.response.status === 400) {
-      return dispatch(addDoctorError('CRM já existente.'));
-    }
+    dispatch(fetchError('Houve um problema. Tente novamente mais tarde.'));
+  }
+};
 
-    dispatch(addDoctorError('Houve um problema. Tente novamente mais tarde.'));
+export const fetchDoctorList = (spec) => async (dispatch) => {
+  try {
+    dispatch(fetchStart());
+
+    const response = await API.GET_DOCTORS_BY_SPEC(spec);
+
+    dispatch(
+      fetchSuccess({ name: 'doctorList', value: response.data.doctors })
+    );
+  } catch (err) {
+    dispatch(fetchError('Houve um problema. Tente novamente mais tarde.'));
   }
 };
 
 export const {
-  addDoctorStart,
-  addDoctorSuccess,
-  addDoctorError,
+  fetchStart,
+  fetchSuccess,
+  fetchError,
   change,
   clear,
 } = agendamentoSlice.actions;
 
 export const selectIsLoading = (state) => state.agendamento.isLoading;
 export const selectError = (state) => state.agendamento.error;
+export const selectSpec = (state) => state.agendamento.spec;
+export const selectSpecList = (state) => state.agendamento.specList;
+export const selectDoctor = (state) => state.agendamento.doctor;
+export const selectDoctorList = (state) => state.agendamento.doctorList;
 export const selectDate = (state) => state.agendamento.date;
+export const selectHoursRange = (state) => state.agendamento.hoursRange;
 
 export default agendamentoSlice.reducer;

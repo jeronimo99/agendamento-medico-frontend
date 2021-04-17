@@ -6,6 +6,8 @@ export const URLS = {
   ADD_DOCTOR: '/admin/doctors',
   GET_DOCTORS: '/admin/doctors',
   DELETE_DOCTOR: '/admin/doctors/:id',
+  GET_SPECS: '/user/specs',
+  GET_DOCTORS_BY_SPEC: '/user/specs/:id/doctors',
   GET_PATIENTS: '/admin/patients',
 };
 
@@ -33,6 +35,14 @@ const getDoctors = () => {
   return axios.get(URLS.GET_DOCTORS);
 };
 
+const getSpecs = () => {
+  return axios.get(URLS.GET_SPECS);
+};
+
+const getDoctorsBySpec = (spec) => {
+  return axios.get(URLS.GET_DOCTORS_BY_SPEC.replace(':id', spec));
+};
+
 const getPatients = () => {
   return axios.get(URLS.GET_PATIENTS);
 };
@@ -43,6 +53,8 @@ const API = {
   ADD_DOCTOR: addDoctor,
   GET_DOCTORS: getDoctors,
   DELETE_DOCTOR: deleteDoctor,
+  GET_SPECS: getSpecs,
+  GET_DOCTORS_BY_SPEC: getDoctorsBySpec,
   GET_PATIENTS: getPatients,
 };
 

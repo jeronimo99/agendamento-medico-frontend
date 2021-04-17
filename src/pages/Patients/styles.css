@@ -36,7 +36,7 @@
   font-size: 0.9em;
 }
 
-.search-bar {
+.patients-body-container .search-bar {
   background-color: #f3f4f6;
   width: 60%;
   height: 50px;
@@ -46,14 +46,14 @@
   margin: 30px 0;
 }
 
-.search-bar label {
+.patients-body-container .search-bar label {
   margin: 0px 12px;
   font-size: 1.4em;
   cursor: pointer;
   color: #9ca3af;
 }
 
-.search-bar input {
+.patients-body-container .search-bar input {
   background-color: #f3f4f6;
   height: 50px;
   width: 100%;
