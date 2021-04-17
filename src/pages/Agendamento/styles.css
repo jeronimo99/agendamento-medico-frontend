@@ -8,3 +8,13 @@
 .agendamento-container a:active {
   color: #333;
 }
+
+.agendamento-container form {
+  display: flex;
+  flex-direction: column;
+  width: 200px;
+}
+
+.agendamento-container .MuiFormControl-root {
+  margin-bottom: 10px;
+}

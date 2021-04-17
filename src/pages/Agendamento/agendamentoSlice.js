@@ -11,6 +11,7 @@ export const agendamentoSlice = createSlice({
     doctorList: '',
     date: moment().format('YYYY-MM-DD'),
     hoursRange: '',
+    hoursRangeList: '',
     isLoading: false,
     error: '',
   },
@@ -27,6 +28,15 @@ export const agendamentoSlice = createSlice({
     fetchError: (state, action) => {
       state.isLoading = false;
       state.error = action.payload;
+    },
+    changeSpec: (state, action) => {
+      state.spec = action.payload;
+      state.doctor = '';
+      state.hoursRange = '';
+    },
+    changeDoctor: (state, action) => {
+      state.doctor = action.payload;
+      state.hoursRange = '';
     },
     change: (state, action) => {
       state[action.payload.name] = action.payload.value;
@@ -72,6 +82,8 @@ export const {
   fetchStart,
   fetchSuccess,
   fetchError,
+  changeSpec,
+  changeDoctor,
   change,
   clear,
 } = agendamentoSlice.actions;
