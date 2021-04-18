@@ -61,6 +61,10 @@ export const agendamentoSlice = createSlice({
       state.isLoading = false;
       state.error = '';
       state.isSuccess = true;
+      state.spec = '';
+      state.doctor = '';
+      state.schedule = '';
+      state.scheduleList = [];
     },
   },
 });
@@ -105,10 +109,10 @@ export const fetchScheduleList = (id, date) => async (dispatch) => {
   }
 };
 
-export const addSchedule = ({ doctor, date, spec }) => async (dispatch) => {
+export const addSchedule = ({ doctor, date, schedule }) => async (dispatch) => {
   try {
     dispatch(fetchStart());
-    await API.ADD_SCHEDULE({ doctor, date, spec });
+    await API.ADD_SCHEDULE({ doctor, date, schedule });
 
     dispatch(addSuccess());
   } catch (err) {

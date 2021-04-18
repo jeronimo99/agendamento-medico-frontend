@@ -8,9 +8,10 @@ export const URLS = {
   DELETE_DOCTOR: '/admin/doctors/:id',
   GET_SPECS: '/user/specs',
   GET_DOCTORS_BY_SPEC: '/user/specs/:id/doctors',
-  GET_SCHEDULE_LIST: '/user/doctors/:id/schedule/',
-  ADD_SCHEDULE: '/user/doctors/:id/schedule/',
+  GET_SCHEDULE_LIST: '/user/doctors/:id/schedule',
+  ADD_SCHEDULE: '/user/doctors/:id/schedule',
   GET_PATIENTS: '/admin/patients',
+  GET_APPOINTMENTS_BY_DOCTOR: '/admin/doctors/:id/appointments',
 };
 
 const register = (form) => {
@@ -55,10 +56,10 @@ const getScheduleList = (id, date) => {
   });
 };
 
-const addSchedule = ({ doctor, date, spec }) => {
+const addSchedule = ({ doctor, date, schedule }) => {
   const params = {
     date: date,
-    spec: spec,
+    schedule: schedule,
   };
 
   return axios.post(URLS.ADD_SCHEDULE.replace(':id', doctor), params);
@@ -66,6 +67,16 @@ const addSchedule = ({ doctor, date, spec }) => {
 
 const getPatients = () => {
   return axios.get(URLS.GET_PATIENTS);
+};
+
+const getAppointmentsByDoctor = (doctor, date) => {
+  const queryParams = {
+    date: date,
+  };
+
+  return axios.get(URLS.GET_APPOINTMENTS_BY_DOCTOR.replace(':id', doctor), {
+    params: queryParams,
+  });
 };
 
 const API = {
@@ -79,6 +90,7 @@ const API = {
   GET_SCHEDULE_LIST: getScheduleList,
   ADD_SCHEDULE: addSchedule,
   GET_PATIENTS: getPatients,
+  GET_APPOINTMENTS_BY_DOCTOR: getAppointmentsByDoctor,
 };
 
 export default API;

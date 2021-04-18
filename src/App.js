@@ -10,6 +10,7 @@ import Login from './pages/Login';
 import Register from './pages/Register';
 import Doctors from './pages/Doctors';
 import Patients from './pages/Patients';
+import AgendamentoAdmin from './pages/AgendamentoAdmin';
 
 import { selectIsAdmin, selectIsUser } from './pages/Login/loginSlice';
 
@@ -25,6 +26,9 @@ function App() {
       {isAdmin && <Route path="/admin" exact component={Admin} />}
       {isAdmin && <Route path="/admin/medicos" exact component={Doctors} />}
       {isAdmin && <Route path="/admin/pacientes" exact component={Patients} />}
+      {isAdmin && (
+        <Route path="/admin/agendamento" exact component={AgendamentoAdmin} />
+      )}
 
       <Route path="/login" component={Login} />
       <Route path="/registrar" component={Register} />

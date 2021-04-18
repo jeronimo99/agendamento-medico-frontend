@@ -1,0 +1,74 @@
+.agendamento-admin-body-container {
+  display: flex;
+  min-height: 100vh;
+  font-family: 'Roboto', sans-serif;
+  background-color: white;
+  width: 100%;
+}
+
+.agendamento-admin-body-container form {
+  margin-bottom: 20px;
+  width: 100%;
+}
+
+.agendamento-admin-body-container .section {
+  display: flex;
+  align-items: center;
+  flex-direction: column;
+  width: 100%;
+}
+
+.agendamento-admin-container {
+  display: flex;
+  flex-direction: column;
+  width: 78%;
+  height: 100vh;
+}
+.agendamento-admin-container button.add-doc {
+  display: flex;
+  align-items: center;
+  justify-content: space-evenly;
+  background: #0ead69;
+  border: none;
+  cursor: pointer;
+  width: 140px;
+  color: white;
+  border-radius: 12px;
+  height: 50px;
+  text-transform: uppercase;
+}
+
+.add-doc i {
+  font-size: 23px;
+}
+
+.agendamento-admin-body-container form span {
+  margin-left: 20px;
+  color: red;
+  font-size: 0.9em;
+}
+
+form .doctor-inputs {
+  display: flex;
+  justify-content: space-evenly;
+  align-items: center;
+  margin: 47px 0 20px 0;
+}
+form .doctor-inputs .label {
+  font-size: 0.8em;
+  text-transform: uppercase;
+  color: #6b7280;
+  margin-bottom: 4px;
+}
+
+#name,
+#crm,
+#spec {
+  border: none;
+  outline: none;
+  border-radius: 4px;
+  background-color: #e5e7eb;
+  height: 38px;
+  color: #4b5563;
+  padding-left: 13px;
+}

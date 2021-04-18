@@ -52,7 +52,7 @@ function Agendamento() {
   }, []);
 
   useEffect(() => {
-    if (specList.length < 1) {
+    if (specList.length < 1 || !spec) {
       return;
     }
     dispatch(fetchDoctorList(spec));
@@ -86,7 +86,7 @@ function Agendamento() {
   };
 
   const handleClick = () => {
-    dispatch(addSchedule({ doctor, date, spec }));
+    dispatch(addSchedule({ doctor, date, schedule }));
   };
 
   return (
@@ -96,8 +96,6 @@ function Agendamento() {
           <i className="bi bi-arrow-left-square"></i>
         </Link>
       </div>
-      {error && error}
-      {isSuccess && 'Agendamento realizado com sucesso!'}
       <div className="agendamento-form">
         <div className="imagem">
           <img src={imgAgendamento} alt="histórico" />
@@ -184,6 +182,8 @@ function Agendamento() {
               Agendar
             </Button>
           )}
+          {error && error}
+          {isSuccess && 'Agendamento realizado com sucesso!'}
         </form>
       </div>
     </div>

@@ -17,7 +17,7 @@ function Sidebar() {
           </Link>
         </div>
         <div id="agendamento">
-          <Link to="/">
+          <Link to="/admin/agendamento">
             Agendamentos <i className="bi bi-calendar2-check"></i>
           </Link>
         </div>
