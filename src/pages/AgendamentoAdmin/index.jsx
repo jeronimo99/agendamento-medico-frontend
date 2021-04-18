@@ -62,6 +62,7 @@ function Doctors() {
     <div className="agendamento-admin-body-container">
       <Sidebar />
       <div className="agendamento-admin-container">
+        <div className="filtros">
         <FormControl>
           <InputLabel id="agendamento-doctor">Médico</InputLabel>
           <Select
@@ -97,6 +98,7 @@ function Doctors() {
           />
         )}
         {isLoading && <Loader type="Oval" height={40} width={40} />}
+      </div> 
         {error && <span id="error">{error}</span>}
         <div className="section">
           <AgendamentoAdminTable data={data} handleDelete={handleDelete} />

@@ -7,6 +7,7 @@ function DoctorsTable({ data = null, handleDelete }) {
       <div className="row" id="title">
         <div className="cell">Paciente</div>
         <div className="cell">Horário</div>
+        <div className="cell">Telefone</div>
         <div className="cell"></div>
       </div>
       {data &&
@@ -14,7 +15,11 @@ function DoctorsTable({ data = null, handleDelete }) {
           <div className="row" key={item._id}>
             <div className="cell">{item.name}</div>
             <div className="cell">{item.appointment}</div>
+            <div className="cell">{item.phone}</div>
             <div className="cell center">
+            <button>
+                <i className="bi bi-whatsapp"></i>
+              </button>
               <button onClick={() => handleDelete(item._id)}>
                 <i className="bi bi-trash"></i>
               </button>
