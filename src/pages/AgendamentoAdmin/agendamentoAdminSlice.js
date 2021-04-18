@@ -38,6 +38,16 @@ export const agendamentoAdminSlice = createSlice({
       state.date = action.payload;
       state.schedule = '';
     },
+    deleteAppointmentSuccess: (state, action) => {
+      state.isLoading = false;
+      state.error = '';
+      const index = state.data.findIndex(
+        (item) => item.appointment === action.payload
+      );
+      if (index > -1) {
+        state.data.splice(index, 1);
+      }
+    },
     clear: (state) => {
       state.isLoading = false;
       state.error = '';
@@ -71,6 +81,24 @@ export const fetchAppointments = (doctor, date) => async (dispatch) => {
   }
 };
 
+export const deleteAppointment = ({ schedule, doctor, date }) => async (
+  dispatch
+) => {
+  try {
+    dispatch(fetchStart());
+
+    await API.DELETE_APPOINTMENT_ADMIN({
+      schedule,
+      doctor,
+      date,
+    });
+
+    dispatch(deleteAppointmentSuccess(schedule));
+  } catch (err) {
+    dispatch(fetchError('Houve um problema. Tente novamente mais tarde.'));
+  }
+};
+
 export const {
   fetchStart,
   fetchDoctorsSuccess,
@@ -78,6 +106,7 @@ export const {
   fetchError,
   changeDoctor,
   changeDate,
+  deleteAppointmentSuccess,
   clear,
 } = agendamentoAdminSlice.actions;
 

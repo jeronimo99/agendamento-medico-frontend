@@ -12,12 +12,16 @@ import { logout, selectIsAdmin, selectIsUser } from '../Login/loginSlice';
 import './styles.css';
 import registerImage from '../../assets/register.svg';
 
+Yup.addMethod(Yup.string, 'integer', function () {
+  return this.matches(/^\d+$/, 'Somente números!');
+});
+
 const validationSchema = Yup.object().shape({
   name: Yup.string()
     .min(4, 'Nome muito curto!')
     .max(50, 'Nome muito longo!')
     .required('Obrigatório'),
-  phone: Yup.string().required('Obrigatório'),
+  phone: Yup.string().required('Obrigatório').integer(),
   email: Yup.string()
     .email('Email inválido')
     .lowercase('Letras minúsculas')

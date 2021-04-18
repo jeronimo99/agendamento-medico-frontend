@@ -12,6 +12,7 @@ export const URLS = {
   ADD_SCHEDULE: '/user/doctors/:id/schedule',
   GET_PATIENTS: '/admin/patients',
   GET_APPOINTMENTS_BY_DOCTOR: '/admin/doctors/:id/appointments',
+  DELETE_APPOINTMENT_ADMIN: '/admin/doctors/:id/appointments',
 };
 
 const register = (form) => {
@@ -79,6 +80,18 @@ const getAppointmentsByDoctor = (doctor, date) => {
   });
 };
 
+const deleteAppointmentAdmin = ({ doctor, date, schedule }) => {
+  const params = {
+    date: date,
+    schedule: schedule,
+  };
+
+  return axios.put(
+    URLS.DELETE_APPOINTMENT_ADMIN.replace(':id', doctor),
+    params
+  );
+};
+
 const API = {
   REGISTER: register,
   LOGIN: login,
@@ -91,6 +104,7 @@ const API = {
   ADD_SCHEDULE: addSchedule,
   GET_PATIENTS: getPatients,
   GET_APPOINTMENTS_BY_DOCTOR: getAppointmentsByDoctor,
+  DELETE_APPOINTMENT_ADMIN: deleteAppointmentAdmin,
 };
 
 export default API;

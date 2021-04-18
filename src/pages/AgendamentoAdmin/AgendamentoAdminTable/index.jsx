@@ -12,15 +12,21 @@ function DoctorsTable({ data = null, handleDelete }) {
       </div>
       {data &&
         data.map((item) => (
-          <div className="row" key={item._id}>
+          <div className="row" key={item.appointment}>
             <div className="cell">{item.name}</div>
             <div className="cell">{item.appointment}</div>
             <div className="cell">{item.phone}</div>
             <div className="cell center">
-            <button>
-                <i className="bi bi-whatsapp"></i>
+              <button>
+                <a
+                  href={`https://wa.me/${item.phone}`}
+                  target="_blank"
+                  rel="noreferrer"
+                >
+                  <i className="bi bi-whatsapp"></i>
+                </a>
               </button>
-              <button onClick={() => handleDelete(item._id)}>
+              <button onClick={() => handleDelete(item.appointment)}>
                 <i className="bi bi-trash"></i>
               </button>
             </div>
