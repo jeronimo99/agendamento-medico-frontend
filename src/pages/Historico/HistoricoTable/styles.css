@@ -1,0 +1,69 @@
+.agendamento-admin-container .doctors-table {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  max-width: 950px;
+  width: 100%;
+}
+
+.agendamento-admin-container .doctors-table .row {
+  min-height: 36px;
+  display: flex;
+  align-items: center;
+  flex-direction: row;
+  word-break: break-all;
+}
+
+.agendamento-admin-container .doctors-table #title {
+  font-size: 1.4em;
+  background-color: #0ead69;
+  color: white;
+}
+
+.agendamento-admin-container .doctors-table .cell {
+  margin-left: 12px;
+}
+
+.agendamento-admin-container .doctors-table .cell.center {
+  display: flex;
+  justify-content: space-evenly;
+  width: 30px;
+}
+
+.agendamento-admin-container .doctors-table #title .cell {
+  justify-content: flex-start;
+}
+
+.agendamento-admin-container .doctors-table .row .cell {
+  flex: 1;
+  display: flex;
+}
+
+.agendamento-admin-container .doctors-table .row:nth-child(odd) {
+  background: #e5e7eb;
+}
+
+.agendamento-admin-container .doctors-table .row:hover {
+  background-color: #0ead69;
+  color: white;
+}
+.agendamento-admin-container .doctors-table .row {
+  color: #4b5563;
+}
+
+.agendamento-admin-container .doctors-table .row .title .cell {
+  font-size: 1.2em;
+}
+
+.agendamento-admin-container .doctors-table .row {
+  justify-content: flex-start;
+}
+
+.agendamento-admin-container .doctors-table button {
+  border: none;
+  background: none;
+  cursor: pointer;
+  font-size: 1.7em;
+  background-color: none !important;
+  color: #374151;
+}

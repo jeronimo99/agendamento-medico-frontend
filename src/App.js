@@ -11,6 +11,7 @@ import Register from './pages/Register';
 import Doctors from './pages/Doctors';
 import Patients from './pages/Patients';
 import AgendamentoAdmin from './pages/AgendamentoAdmin';
+import Historico from './pages/Historico';
 
 import { selectIsAdmin, selectIsUser } from './pages/Login/loginSlice';
 
@@ -22,6 +23,7 @@ function App() {
     <Switch>
       {isUser && <Route path="/" exact component={Main} />}
       {isUser && <Route path="/agendamento" exact component={Agendamento} />}
+      {isUser && <Route path="/historico" exact component={Historico} />}
 
       {isAdmin && <Route path="/admin" exact component={Admin} />}
       {isAdmin && <Route path="/admin/medicos" exact component={Doctors} />}

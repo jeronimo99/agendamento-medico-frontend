@@ -6,6 +6,7 @@ import doctorsReducer from './pages/Doctors/doctorsSlice';
 import patientsReducer from './pages/Patients/patientsSlice';
 import agendamentoReducer from './pages/Agendamento/agendamentoSlice';
 import agendamentoAdminReducer from './pages/AgendamentoAdmin/agendamentoAdminSlice';
+import historicoReducer from './pages/Historico/historicoSlice';
 
 export const rootReducer = {
   register: registerReducer,
@@ -14,6 +15,7 @@ export const rootReducer = {
   patients: patientsReducer,
   agendamento: agendamentoReducer,
   agendamentoAdmin: agendamentoAdminReducer,
+  historico: historicoReducer,
 };
 
 export default configureStore({

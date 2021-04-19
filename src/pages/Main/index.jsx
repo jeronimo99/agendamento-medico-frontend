@@ -28,7 +28,7 @@ function Main() {
             <img src={img1} alt="histórico" />
           </div>
           <div className="botao">
-            <Link to="/" id="conferir" className="botaoCard">
+            <Link to="/historico" id="conferir" className="botaoCard">
               conferir
             </Link>
           </div>

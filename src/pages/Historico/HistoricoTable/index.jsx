@@ -1,8 +1,7 @@
 import PropTypes from 'prop-types';
 import './styles.css';
-import { sortArray } from '../../../utils/functions';
 
-function AgendamentoAdminTable({ data = null, handleDelete }) {
+function HistoricoTable({ data = null, handleDelete }) {
   return (
     <div className="doctors-table">
       <div className="row" id="title">
@@ -12,7 +11,7 @@ function AgendamentoAdminTable({ data = null, handleDelete }) {
         <div className="cell"></div>
       </div>
       {data &&
-        sortArray(data).map((item) => (
+        data.map((item) => (
           <div className="row" key={item.appointment}>
             <div className="cell">{item.name}</div>
             <div className="cell">{item.appointment}</div>
@@ -37,9 +36,9 @@ function AgendamentoAdminTable({ data = null, handleDelete }) {
   );
 }
 
-AgendamentoAdminTable.propTypes = {
+HistoricoTable.propTypes = {
   data: PropTypes.array,
   handleDelete: PropTypes.func.isRequired,
 };
 
-export default AgendamentoAdminTable;
+export default HistoricoTable;
