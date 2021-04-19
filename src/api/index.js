@@ -13,6 +13,7 @@ export const URLS = {
   GET_PATIENTS: '/admin/patients',
   GET_APPOINTMENTS_BY_DOCTOR: '/admin/doctors/:id/appointments',
   DELETE_APPOINTMENT_ADMIN: '/admin/doctors/:id/appointments',
+  GET_APPOINTMENTS_USER: '/user/schedule',
 };
 
 const register = (form) => {
@@ -92,6 +93,16 @@ const deleteAppointmentAdmin = ({ doctor, date, schedule }) => {
   );
 };
 
+const getAppointmentsUser = (date) => {
+  const queryParams = {
+    date: date,
+  };
+
+  return axios.get(URLS.GET_APPOINTMENTS_USER, {
+    params: queryParams,
+  });
+};
+
 const API = {
   REGISTER: register,
   LOGIN: login,
@@ -105,6 +116,7 @@ const API = {
   GET_PATIENTS: getPatients,
   GET_APPOINTMENTS_BY_DOCTOR: getAppointmentsByDoctor,
   DELETE_APPOINTMENT_ADMIN: deleteAppointmentAdmin,
+  GET_APPOINTMENTS_USER: getAppointmentsUser,
 };
 
 export default API;

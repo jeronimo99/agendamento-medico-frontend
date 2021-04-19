@@ -43,12 +43,12 @@ export const historicoSlice = createSlice({
   },
 });
 
-export const fetchAppointments = (doctor, date) => async (dispatch) => {
+export const fetchAppointments = (date) => async (dispatch) => {
   try {
     dispatch(fetchStart());
-    const response = await API.GET_APPOINTMENTS_BY_DOCTOR(doctor, date);
+    const response = await API.GET_APPOINTMENTS_USER(date);
 
-    dispatch(fetchAppointmentsSuccess(response.data.appointments));
+    dispatch(fetchAppointmentsSuccess(response.data.schedules));
   } catch (err) {
     dispatch(fetchError('Houve um problema. Tente novamente mais tarde.'));
   }

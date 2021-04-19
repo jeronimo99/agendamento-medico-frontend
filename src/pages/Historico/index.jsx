@@ -1,9 +1,9 @@
 import { useEffect } from 'react';
+import { Link } from 'react-router-dom';
 import { useSelector, useDispatch } from 'react-redux';
 import moment from 'moment';
 import TextField from '@material-ui/core/TextField';
 
-import Sidebar from '../../components/Sidebar';
 import {
   selectError,
   selectData,
@@ -37,8 +37,12 @@ function Historico() {
 
   return (
     <div className="agendamento-admin-body-container">
-      <Sidebar />
       <div className="agendamento-admin-container">
+        <div className="sair">
+          <Link to="/">
+            <i className="bi bi-arrow-left-square"></i>
+          </Link>
+        </div>
         <div className="filtros">
           <TextField
             id="date"
