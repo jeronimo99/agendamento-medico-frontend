@@ -20,7 +20,7 @@ function AgendamentoAdminTable({ data = null, handleDelete }) {
             <div className="cell center">
               <button>
                 <a
-                  href={`https://wa.me/${item.phone}`}
+                  href={`https://wa.me/550${item.phone}`}
                   target="_blank"
                   rel="noreferrer"
                 >
