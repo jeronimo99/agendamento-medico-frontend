@@ -4,7 +4,7 @@ Este projeto é a aplicação frontend do projeto de conclusão de curso de Jer�
 
 Esta é uma SPA (Single Page Application) feita em `React`, servida por uma RESTful API.
 
-Esta aplicação deve ser inicializada juntamente com a sua contraparte [backend](https://github.com/jeronimo99/agendamento-medico-backend)
+Esta aplicação deve ser inicializada juntamente com a sua contraparte [backend](https://github.com/jeronimo99/agendamento-medico-backend).
 
 ## Instalação
 
