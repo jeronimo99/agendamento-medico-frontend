@@ -10,7 +10,7 @@ Esta aplicação deve ser inicializada juntamente com a sua contraparte [backend
 
 Uma demonstração da aplicação completa (frontend + backend) pode ser encontrada em [Agendamento Médico](https://agendamento-medico-jeronimo.vercel.app)
 
-login: admin@admin.com
+login: admin@admin.com\
 senha: 12345678
 
 ## Instalação
