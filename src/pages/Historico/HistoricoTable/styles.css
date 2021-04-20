@@ -1,4 +1,4 @@
-.agendamento-admin-container .doctors-table {
+.historico-agendamento-container .doctors-table {
   display: flex;
   flex-direction: column;
   justify-content: center;
@@ -6,7 +6,7 @@
   width: 100%;
 }
 
-.agendamento-admin-container .doctors-table .row {
+.historico-agendamento-container .doctors-table .row {
   min-height: 36px;
   display: flex;
   align-items: center;
@@ -14,56 +14,113 @@
   word-break: break-all;
 }
 
-.agendamento-admin-container .doctors-table #title {
+.historico-agendamento-container .doctors-table #title {
   font-size: 1.4em;
   background-color: #0ead69;
   color: white;
 }
 
-.agendamento-admin-container .doctors-table .cell {
+.historico-agendamento-container .doctors-table .cell {
   margin-left: 12px;
 }
 
-.agendamento-admin-container .doctors-table .cell.center {
+.historico-agendamento-container .doctors-table .cell.center {
   display: flex;
   justify-content: space-evenly;
   width: 30px;
 }
 
-.agendamento-admin-container .doctors-table #title .cell {
+.historico-agendamento-container .doctors-table #title .cell {
   justify-content: flex-start;
 }
 
-.agendamento-admin-container .doctors-table .row .cell {
+.historico-agendamento-container .doctors-table .row .cell {
   flex: 1;
   display: flex;
 }
 
-.agendamento-admin-container .doctors-table .row:nth-child(odd) {
+.historico-agendamento-container .doctors-table .row:nth-child(odd) {
   background: #e5e7eb;
 }
 
-.agendamento-admin-container .doctors-table .row:hover {
+.historico-agendamento-container .doctors-table .row:hover {
   background-color: #0ead69;
   color: white;
 }
-.agendamento-admin-container .doctors-table .row {
+.historico-agendamento-container .doctors-table .row {
   color: #4b5563;
 }
 
-.agendamento-admin-container .doctors-table .row .title .cell {
+.historico-agendamento-container .doctors-table .row .title .cell {
   font-size: 1.2em;
 }
 
-.agendamento-admin-container .doctors-table .row {
+.historico-agendamento-container .doctors-table .row {
   justify-content: flex-start;
 }
 
-.agendamento-admin-container .doctors-table button {
+.historico-agendamento-container .doctors-table button {
   border: none;
   background: none;
   cursor: pointer;
   font-size: 1.7em;
   background-color: none !important;
   color: #374151;
+}
+
+@media only screen and (max-width: 768px) {
+  .historico-agendamento-body-container .section {
+    height: 100vh;
+  }
+
+  .historico-agendamento-container .doctors-table {
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    max-width: 950px;
+    width: 100%;
+    overflow-y: hidden;
+    overflow-x: auto;
+    min-height: 40%;
+  }
+  .historico-agendamento-container .sair {
+    width: 100%;
+    height: 15%;
+    padding-left: 5%;
+    margin: 30px 0 70px 0;
+  }
+
+  .historico-agendamento-container .sair h2 {
+    margin-left: 60px;
+  }
+
+  .historico-agendamento-container .doctors-table .row {
+    flex-direction: column;
+    justify-content: flex-start;
+    align-items: flex-start;
+    height: 100%;
+  }
+
+  .historico-agendamento-container .doctors-table .row:nth-child(2) {
+    margin-left: 250%;
+  }
+
+  .historico-agendamento-container .doctors-table .row.items {
+    min-width: 70%;
+  }
+
+  .historico-agendamento-container .doctors-table #title {
+    width: 36%;
+    max-height: 30%;
+    font-size: 1.2em;
+    background-color: #0ead69;
+    color: white;
+    position: fixed;
+    left: 0;
+  }
+
+  .historico-agendamento-container .doctors-table .cell {
+    font-size: 1em;
+    margin: 10px;
+  }
 }

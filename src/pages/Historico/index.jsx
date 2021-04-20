@@ -26,12 +26,13 @@ function Historico() {
   };
 
   return (
-    <div className="agendamento-admin-body-container">
-      <div className="agendamento-admin-container">
+    <div className="historico-agendamento-body-container">
+      <div className="historico-agendamento-container">
         <div className="sair">
           <Link to="/">
             <i className="bi bi-arrow-left-square"></i>
           </Link>
+          <h2>Histórico de Agendamentos</h2>
         </div>
         {error && <span id="error">{error}</span>}
         <div className="section">

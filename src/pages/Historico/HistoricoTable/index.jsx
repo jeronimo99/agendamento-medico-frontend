@@ -12,7 +12,7 @@ function HistoricoTable({ data = null, handleDelete }) {
       </div>
       {data &&
         data.map((item) => (
-          <div className="row" key={item}>
+          <div className="row items" key={item}>
             <div className="cell">{item.date}</div>
             <div className="cell">{item.appointment}</div>
             <div className="cell">{item.doctor}</div>
