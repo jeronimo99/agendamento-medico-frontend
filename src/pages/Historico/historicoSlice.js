@@ -1,5 +1,4 @@
 import { createSlice } from '@reduxjs/toolkit';
-import moment from 'moment';
 import API from '../../api';
 
 export const historicoSlice = createSlice({
@@ -8,7 +7,6 @@ export const historicoSlice = createSlice({
     isLoading: false,
     error: '',
     data: null,
-    date: moment().format('YYYY-MM-DD'),
     doctor: '',
     doctorList: [],
   },
@@ -26,10 +24,6 @@ export const historicoSlice = createSlice({
       state.error = '';
       state.data = action.payload;
     },
-    changeDate: (state, action) => {
-      state.date = action.payload;
-      state.schedule = '';
-    },
     deleteAppointmentSuccess: (state, action) => {
       state.isLoading = false;
       state.error = '';
@@ -46,7 +40,7 @@ export const historicoSlice = createSlice({
 export const fetchAppointments = (date) => async (dispatch) => {
   try {
     dispatch(fetchStart());
-    const response = await API.GET_APPOINTMENTS_USER(date);
+    const response = await API.GET_APPOINTMENTS_USER();
 
     dispatch(fetchAppointmentsSuccess(response.data.schedules));
   } catch (err) {
@@ -76,7 +70,6 @@ export const {
   fetchStart,
   fetchAppointmentsSuccess,
   fetchError,
-  changeDate,
   deleteAppointmentSuccess,
   clear,
 } = historicoSlice.actions;

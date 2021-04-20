@@ -5,31 +5,18 @@ function HistoricoTable({ data = null, handleDelete }) {
   return (
     <div className="doctors-table">
       <div className="row" id="title">
-        <div className="cell">Médico</div>
+        <div className="cell">Dia</div>
         <div className="cell">Horário</div>
-        <div className="cell">Telefone</div>
-        <div className="cell"></div>
+        <div className="cell">Médico</div>
+        <div className="cell">Especialização</div>
       </div>
       {data &&
         data.map((item) => (
           <div className="row" key={item}>
-            <div className="cell">Médico</div>
-            <div className="cell">{item}</div>
-            <div className="cell">Telefone</div>
-            <div className="cell center">
-              <button>
-                <a
-                  href={`https://wa.me/${item.phone}`}
-                  target="_blank"
-                  rel="noreferrer"
-                >
-                  <i className="bi bi-whatsapp"></i>
-                </a>
-              </button>
-              <button onClick={() => handleDelete(item.appointment)}>
-                <i className="bi bi-trash"></i>
-              </button>
-            </div>
+            <div className="cell">{item.date}</div>
+            <div className="cell">{item.appointment}</div>
+            <div className="cell">{item.doctor}</div>
+            <div className="cell">{item.spec}</div>
           </div>
         ))}
     </div>

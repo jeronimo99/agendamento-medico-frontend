@@ -93,14 +93,8 @@ const deleteAppointmentAdmin = ({ doctor, date, schedule }) => {
   );
 };
 
-const getAppointmentsUser = (date) => {
-  const queryParams = {
-    date: date,
-  };
-
-  return axios.get(URLS.GET_APPOINTMENTS_USER, {
-    params: queryParams,
-  });
+const getAppointmentsUser = () => {
+  return axios.get(URLS.GET_APPOINTMENTS_USER);
 };
 
 const API = {
