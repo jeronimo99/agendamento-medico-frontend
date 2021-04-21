@@ -37,7 +37,6 @@ function Historico() {
         {error && <span id="error">{error}</span>}
         <div className="section">
           <HistoricoTable data={data} handleDelete={handleDelete} />
-          {console.log(data)}
         </div>
       </div>
     </div>
